@@ -11,14 +11,14 @@
     <div class="sidebar">
     <header>MedicSite</header>
     <ul>
-     <li><a href="#"><i class="fas fa-newspaper"></i>News</a></li>
-     <li><a href="#"><i class="fas fa-link"></i>Meddit</a></li>
-     <li><a href="#"><i class="fas fa-map"></i>Locator</a></li>
-     <li><a href="#"><i class="fas fa-hand-holding-medical"></i>Skin Cancer</a></li>
-     <li><a href="#"><i class="far fa-lungs"></i>Lung Cancer</a></li>
-     <li><a href="#"><i class="fas fa-ribbon"></i>Breast Cancer</a></li>
-     <li><a href="#"><i class="far fa-envelope"></i>Contact</a></li>
-     <li><a href="#"><i class="far fa-question-circle"></i>About</a></li>
+     <li><a href="{{ url_for('news') }}"><i class="fas fa-newspaper"></i>News</a></li>
+     <li><a href="{{ url_for('meddit') }}"><i class="fas fa-link"></i>Meddit</a></li>
+     <li><a href="{{ url_for('locator') }}"><i class="fas fa-map"></i>Locator</a></li>
+     <li><a href="{{ url_for('skincancer') }}"><i class="fas fa-hand-holding-medical"></i>Skin Cancer</a></li>
+     <li><a href="{{ url_for('lungcancer') }}"><i class="far fa-lungs"></i>Lung Cancer</a></li>
+     <li><a href="{{ url_for('breastcancer') }}"><i class="fas fa-ribbon"></i>Breast Cancer</a></li>
+     <li><a href="{{ url_for('contact') }}"><i class="far fa-envelope"></i>Contact</a></li>
+     <li><a href="{{ url_for('about') }}"><i class="far fa-question-circle"></i>About</a></li>
     </ul>
    </div>
    <section></section>
