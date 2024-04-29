@@ -1,5 +1,5 @@
-from flask import Flask, render_template
-
+from flask import Flask, render_template, request
+import pygame
 app = Flask(__name__)
 
 @app.route("/")
@@ -33,6 +33,14 @@ def breastcancer():
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
+
+@app.route('/upload_audio', methods=['POST'])
+def upload_audio():
+    if 'audio_file' not in request.files:
+        return "No audio file uploaded", 400
+    else:
+        audio_file = request.files['audio_file']
+        return "Audio uploaded successfully!", 200
 
 if __name__ == "__main__":
     app.run(debug=True)

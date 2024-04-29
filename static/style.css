@@ -49,3 +49,24 @@ section{
   height: 100vh;
   transition: all .5s;
 }
+
+.upload-container {
+  display: flex;
+  align-items: center;
+  padding-left:350px
+  /* Add padding or margin as needed */
+}
+
+.upload-button {
+  background-color: #007bff; /* Adjust background color as desired */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  /* Add hover effects, shadows, etc. for a more modern look */
+}
+
+.upload-button:hover {
+  background-color: #0069d9; /* Adjust hover color as desired */
+}

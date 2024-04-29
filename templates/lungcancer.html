@@ -20,6 +20,14 @@
      <li><a href="{{ url_for('about') }}"><i class="far fa-question-circle"></i>About</a></li>
     </ul>
    </div>
-   <section></section>
+   <section>
+    <form action="/upload_audio" method="post" enctype="multipart/form-data">
+    <div class="upload-container">
+        <label for="audio_file">Select audio file:</label>
+        <input type="file" id="audio_file" name="audio_file" accept="audio/*">
+        <button type="submit">Upload</button>
+    </div>
+</form>
+   </section>
   </body>
 </html>
