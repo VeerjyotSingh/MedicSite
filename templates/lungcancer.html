@@ -5,6 +5,43 @@
     <title>Lung Cancer</title>
     <link rel="stylesheet" href="static/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+
+        form {
+            width: 60%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <div class="sidebar">
@@ -22,13 +59,36 @@
     </ul>
    </div>
    <section>
-    <form action="/upload_audio" method="post" enctype="multipart/form-data">
-    <div class="upload-container">
-        <label for="audio_file">Select audio file:</label>
-        <input type="file" id="audio_file" name="audio_file" accept="audio/*">
-        <button type="submit">Upload</button>
-    </div>
-</form>
+       <div class="upload-container">
+    <form action="{{ url_for('record') }}" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+
+        <label for="place">Place:</label>
+        <input type="text" id="place" name="place" required>
+
+        <label for="smoking">Smoking:</label>
+        <input type="text" id="smoking" name="smoking" required>
+
+        <label for="previous_disease">Previous Disease:</label>
+        <input type="text" id="previous_disease" name="previous_disease" required>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <button type="submit" style="background-color: green; color: #fff; padding: 20px; font-size: 16px; cursor: pointer; border: none; border-radius: 5px; margin-top: 2">Next</button>
+    <a href="{{ url_for('disease_info_page') }}" style="text-decoration: none;">
+        <button style="background-color: #007bff; color: #fff; padding: 20px; font-size: 16px; cursor: pointer; border: none; border-radius: 5px; margin-top: 2">
+            OpenAI Disease Info
+        </button>
+    </form>
+       </div>
    </section>
   </body>
 </html>
