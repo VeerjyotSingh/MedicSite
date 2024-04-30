@@ -7,8 +7,14 @@
     <list default="true" id="8189e33d-ae48-4650-b6e4-51826e3453e6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/breastcancer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/breastcancer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/locator.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/locator.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/lungcancer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lungcancer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/meddit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/meddit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/news.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/news.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/skincancer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/skincancer.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

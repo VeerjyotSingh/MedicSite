@@ -34,13 +34,9 @@ def breastcancer():
 def contact():
     return render_template("contact.html")
 
-@app.route('/upload_audio', methods=['POST'])
-def upload_audio():
-    if 'audio_file' not in request.files:
-        return "No audio file uploaded", 400
-    else:
-        audio_file = request.files['audio_file']
-        return "Audio uploaded successfully!", 200
+@app.route("/test")
+def test():
+    return render_template("onlinetest.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
