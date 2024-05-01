@@ -1,7 +1,7 @@
-name: 231
-age: 132
-place: delhi
-smoking: 213
-previous_disease: 123
-phone: 123
-email: 321@gmail.com
+name: defw
+age: 12
+place: dasf
+smoking: fast
+previous_disease: fads
+phone: 23432412
+email: 123@gmailcom

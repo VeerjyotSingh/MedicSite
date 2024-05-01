@@ -78,7 +78,7 @@ def record():
 
 @app.route('/record_page')
 def record_page():
-    return render_template('record2.html', recording_durations=RECORDING_DURATIONS)
+    return render_template('record3.html', recording_durations=RECORDING_DURATIONS)
 
 
 @app.route("/disease_info_page")
