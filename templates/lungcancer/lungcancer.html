@@ -5,6 +5,7 @@
     <title>Lung Cancer</title>
     <link rel="stylesheet" href="static/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -83,8 +84,8 @@
         <input type="email" id="email" name="email" required>
 
         <button type="submit" style="background-color: green; color: #fff; padding: 20px; font-size: 16px; cursor: pointer; border: none; border-radius: 5px; margin-top: 2">Next</button>
-    <a href="{{ url_for('disease_info_page') }}" style="text-decoration: none;">
-        <button style="background-color: #007bff; color: #fff; padding: 20px; font-size: 16px; cursor: pointer; border: none; border-radius: 5px; margin-top: 2">
+
+        <button onclick="window.location.href='{{ url_for('disease_info_page') }}';" style="background-color: #007bff; color: #fff; padding: 20px; font-size: 16px; cursor: pointer; border: none; border-radius: 5px; margin-top: 2">
             OpenAI Disease Info
         </button>
     </form>
