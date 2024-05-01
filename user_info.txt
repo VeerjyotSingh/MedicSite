@@ -1,0 +1,7 @@
+name: 231
+age: 132
+place: delhi
+smoking: 213
+previous_disease: 123
+phone: 123
+email: 321@gmail.com

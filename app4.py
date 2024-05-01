@@ -10,8 +10,8 @@ app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['USER_INFO_FILE'] = 'user_info.txt'
 app.config['OPENAI_API_KEY'] = 'k-qt9CxfHkoKGL033aDHtkT3BlbkFJjkCA18EkG8Cg60VrIRO'  # Replace with your actual OpenAI API key
 app.secret_key = 'supersecretkey'
-# Mapping each step to its corresponding record
-ing duration
+
+# Mapping each step to its corresponding recording duration
 RECORDING_DURATIONS = {
     'Breathing Deep': 11,
     'Breathing Shallow': 8,
