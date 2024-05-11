@@ -5,11 +5,13 @@
     <title>news</title>
     <link rel="stylesheet" href="static/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
     <div class="sidebar">
     <header>MedicSite</header>
-    <ul>
+    <ul style="
+  padding-left: 0px;">
      <li><a href="{{ url_for('news') }}"><i class="fas fa-newspaper"></i>News</a></li>
      <li><a href="{{ url_for('meddit') }}"><i class="fas fa-link"></i>Meddit</a></li>
      <li><a href="{{ url_for('locator') }}"><i class="fas fa-map"></i>Locator</a></li>
@@ -21,16 +23,59 @@
         <li><a href="{{ url_for('test') }}"><i class="far fa-vial"></i>Online Test</a></li>
     </ul>
    </div>
-    <div style="padding-left:300px;">
+    <div style="padding-left:300px;padding-right:100px">
    <section>
     <h1>Top News Headlines</h1>
-    <ul>
-        {% for article in articles %}
-        <li>
-            <a href="{{ article['url'] }}">{{ article['title'] }}</a>
-        </li>
+        {% for i in range(0,len-1,4) %}
+       <div class="row row-cols-1 row-cols-md-4 g-4" style="padding-top:20px;">
+  <div class="col">
+      <a href = "{{ articles[i]['url'] }}" style="text-decoration:none;">
+    <div class="card">
+      <img src="{{ articles[i]['urlToImage']}}" class="card-img-top" alt="..." style="object-fit: cover;">
+      <div class="card-body">
+        <h5 class="card-title">{{ articles[i]['title']}}</h5>
+        <p class="card-text">{{ articles[i]['description']}}</p>
+      </div>
+    </div>
+      </a>
+  </div>
+  <div class="col">
+      <a href = "{{ articles[i+1]['url'] }}" style="text-decoration:none;">
+    <div class="card">
+      <img src="{{ articles[i+1]['urlToImage']}}" class="card-img-top  " alt="..." style="object-fit: cover;">
+      <div class="card-body">
+        <h5 class="card-title"> {{ articles[i+1]['title']}}</h5>
+        <p class="card-text">{{ articles[i+1]['description']}}</p>
+      </div>
+    </div>
+      </a>
+  </div>
+
+  <div class="col">
+      <a href = "{{ articles[i+2]['url'] }}" style="text-decoration:none;">
+    <div class="card">
+      <img src="{{ articles[i+2]['urlToImage']}}" class="card-img-top" alt="..." style="object-fit: cover;">
+      <div class="card-body">
+        <h5 class="card-title"> {{ articles[i+2]['title']}}</h5>
+        <p class="card-text">{{ articles[i+2]['description']}}</p>
+      </div>
+    </div>
+      </a>
+  </div>
+
+  <div class="col">
+      <a href = "{{ articles[i+3]['url'] }}" style="text-decoration:none;">
+    <div class="card">
+      <img src="{{ articles[i+3]['urlToImage']}}" class="card-img-top  " alt="..." style="object-fit: cover;">
+      <div class="card-body">
+        <h5 class="card-title"> {{ articles[i+3]['title']}}</h5>
+        <p class="card-text">{{ articles[i+3]['description']}}</p>
+      </div>
+    </div>
+      </a>
+  </div>
+       </div>
         {% endfor %}
-    </ul>
    </section>
         </div>
   </body>

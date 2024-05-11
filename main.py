@@ -17,13 +17,15 @@ def news():
 
     # Get top headlines
     top_headlines = newsapi.get_top_headlines(
-        language='en'  # Adjust for your language preference
-    )
+                                          category='health',
+                                          language='en',
+                                          country='in')
 
     # Extract articles
     articles = top_headlines['articles']
-
-    return render_template('news.html', articles=articles)
+    print(articles)
+    length = len(articles)
+    return render_template('news.html', articles=articles, len = length)
 
 
 @app.route("/meddit")

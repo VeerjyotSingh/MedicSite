@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8189e33d-ae48-4650-b6e4-51826e3453e6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/chatbot.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app4.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/lungcancer/lungcancer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lungcancer/lungcancer.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/news.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/news.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/Cough_Heavy.wav" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/Cough_Heavy.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_info.txt" beforeDir="false" afterPath="$PROJECT_DIR$/user_info.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
