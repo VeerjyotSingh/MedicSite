@@ -21,6 +21,17 @@
         <li><a href="{{ url_for('test') }}"><i class="far fa-vial"></i>Online Test</a></li>
     </ul>
    </div>
-   <section></section>
+    <div style="padding-left:300px;">
+   <section>
+    <h1>Top News Headlines</h1>
+    <ul>
+        {% for article in articles %}
+        <li>
+            <a href="{{ article['url'] }}">{{ article['title'] }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+   </section>
+        </div>
   </body>
 </html>

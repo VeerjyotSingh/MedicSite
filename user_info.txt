@@ -1,7 +1,7 @@
-name: dfsv
-age: 41
-place: pdfs
-smoking: dffewq
-previous_disease: ffqwr
-phone: 465122146
-email: dav@gmail.com
+name: Dhruv Gautam
+age: 123
+place: Delhi
+smoking: Yes
+previous_disease: Yes
+phone: 123456789
+email: dghruv@gmail.com

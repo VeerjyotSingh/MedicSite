@@ -10,7 +10,7 @@ body {
 }
 .sidebar {
   position: fixed;
-  left: 0px;
+  left: 0px !important;
   width: 250px;
   height: 100%;
   background: #042331;
@@ -24,6 +24,7 @@ body {
   user-select: none;
 }
 .sidebar ul a{
+  text-decoration: none;
   display: block;
   height: 100%;
   width: 100%;
@@ -54,7 +55,6 @@ section{
   display: flex;
   align-items: center;
   padding-left:350px
-  /* Add padding or margin as needed */
 }
 
 .upload-button {

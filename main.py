@@ -1,9 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 import os
-import soundfile
-import sounddevice
-import pygame
+from newsapi import NewsApiClient
+
 app = Flask(__name__)
+
+api_key = 'a7c40948db6d454aa8ee3f7d5754234b'
 
 @app.route("/")
 def about():
@@ -11,7 +12,19 @@ def about():
 
 @app.route("/news")
 def news():
-    return render_template('news.html')
+    # Create a NewsApiClient object
+    newsapi = NewsApiClient(api_key=api_key)
+
+    # Get top headlines
+    top_headlines = newsapi.get_top_headlines(
+        language='en'  # Adjust for your language preference
+    )
+
+    # Extract articles
+    articles = top_headlines['articles']
+
+    return render_template('news.html', articles=articles)
+
 
 @app.route("/meddit")
 def meddit():
