@@ -1,7 +1,7 @@
-name: Dhruv Gautam
+name: deaq
 age: 123
-place: Delhi
-smoking: Yes
-previous_disease: Yes
+place: EGRW
+smoking: DEFRW
+previous_disease: FVADS
 phone: 123456789
-email: dghruv@gmail.com
+email: 123@gmail.com

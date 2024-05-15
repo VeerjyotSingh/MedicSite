@@ -14,7 +14,7 @@
 
         form {
             text-align: center;
-            width: 60%;
+            width: 70%;
             margin: 50px auto;
             padding: 20px;
             background-color: #fff;
@@ -35,45 +35,53 @@
         }
     </style>
 </head>
-<body>
-    <div class="sidebar" >
-    <header>MedicSite</header>
-    <ul style="
-  padding-left: 0px;">
-     <li><a href="{{ url_for('news') }}"><i class="fas fa-newspaper"></i>News</a></li>
-     <li><a href="{{ url_for('meddit') }}"><i class="fas fa-link"></i>Meddit</a></li>
-     <li><a href="{{ url_for('locator') }}"><i class="fas fa-map"></i>Locator</a></li>
-     <li><a href="{{ url_for('skincancer') }}"><i class="fas fa-hand-holding-medical"></i>Skin Cancer</a></li>
-     <li><a href="{{ url_for('lungcancer') }}"><i class="far fa-lungs"></i>Lung Cancer</a></li>
-     <li><a href="{{ url_for('breastcancer') }}"><i class="fas fa-ribbon"></i>Breast Cancer</a></li>
-     <li><a href="{{ url_for('contact') }}"><i class="far fa-envelope"></i>Contact</a></li>
-     <li><a href="{{ url_for('about') }}"><i class="far fa-question-circle"></i>About</a></li>
-     <li><a href="{{ url_for('test') }}"><i class="far fa-vial"></i>Online Test</a></li>
+<body class="bg-black text-white">
+<nav class="navbar navbar-expand-lg bg-black border-bottom" data-bs-theme="dark">
+  <div class="container-fluid">
+       <a class="navbar-brand" href="{{ url_for('about') }}">MedicSite</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+     <li class="nav-item"><a href="{{ url_for('news') }}" class="nav-link">News</a></li>
+     <li class="nav-item"><a href="{{ url_for('meddit') }}" class="nav-link">Meddit</a></li>
+     <li class="nav-item"><a href="{{ url_for('locator') }}" class="nav-link">Locator</a></li>
+     <li class="nav-item"><a href="{{ url_for('contact') }}" class="nav-link">Contact</a></li>
+        <li class="nav-item"><a href="{{ url_for('test') }}" class="nav-link">Online Test</a></li>
+
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('skincancer') }}">Skin Cancer</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('lungcancer') }}">Lung Cancer</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('breastcancer') }}">Breast Cancer</a></li>
     </ul>
    </div>
+      </div>
+</nav>
+
+       <center>
    <section>
-       <div class="upload-container">
-    <form action="{{ url_for('record') }}" method="post">
+           <div class=" bg-black text-white col-md-6">
+    <form action="{{ url_for('record') }}" method="post" class="bg-black text-white border border-white">
         <label for="name" class="form-label">Name:</label>
-        <input type="text" id="name" name="name" required>
+        <input type="text" id="name" name="name" class="bg-dark text-white border-white"class="bg-dark text-white border-white" required>
 
         <label for="age" class="form-label">Age:</label>
-        <input type="number" id="age" name="age" required>
+        <input type="number" id="age" name="age"class="bg-dark text-white border-white" required>
 
         <label for="place" class="form-label">Place:</label>
-        <input type="text" id="place" name="place" required>
+        <input type="text" id="place" name="place"class="bg-dark text-white border-white" required>
 
         <label for="smoking" class="form-label">Smoking:</label>
-        <input type="text" id="smoking" name="smoking" required>
+        <input type="text" id="smoking" name="smoking"class="bg-dark text-white border-white" required>
 
         <label for="previous_disease" class="form-label">Previous Disease:</label>
-        <input type="text" id="previous_disease" name="previous_disease" required>
+        <input type="text" id="previous_disease" name="previous_disease"class="bg-dark text-white border-white" required>
 
         <label for="phone" class="form-label">Phone:</label>
-        <input type="tel" id="phone" name="phone" required>
+        <input type="tel" id="phone" name="phone"class="bg-dark text-white border-white" required>
 
         <label for="email" class="form-label">Email:</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="email"class="bg-dark text-white border-white" required>
         <button onclick="window.location.href='{{ url_for('disease_info_page') }}';" style="padding: 20px" class="btn btn-secondary">
             OpenAI Disease Info
         </button>
