@@ -23,9 +23,6 @@ def news():
 
     # Extract articles
     articles = top_headlines['articles']
-    for i in articles:
-        if len(i['description']) >= 130:
-            i['description'] = i['description'][0:130:1]+"..."
     length = len(articles)
     return render_template('news.html', articles=articles, len = length)
 

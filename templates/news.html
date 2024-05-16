@@ -34,7 +34,7 @@
        <center>
     <h1>Top News Headlines</h1>
            </center>
-        {% for i in range(0,len-1,4) %}
+        {% for i in range(0,len,4) %}
        <div class="row row-cols-1 row-cols-md-4 g-4 " style="padding-top:20px;">
   <div class="col">
       <a href = "{{ articles[i]['url'] }}" style="text-decoration:none;">
@@ -53,7 +53,7 @@
       <img src="{{ articles[i+1]['urlToImage']}}" class="card-img-top" alt="..." style="object-fit: cover; height:225px">
       <div class="card-body">
         <h5 class="card-title"> {{ articles[i+1]['title']}}</h5>
-        <p class="card-text">{{ articles[i+1]['description']}}</p>
+        <p class="card-text">{{articles[i+1]['description']}}</p>
       </div>
     </div>
       </a>
