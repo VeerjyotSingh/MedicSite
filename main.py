@@ -23,6 +23,7 @@ def news():
 
     # Extract articles
     articles = top_headlines['articles']
+
     length = len(articles)
     return render_template('news.html', articles=articles, len = length)
 
