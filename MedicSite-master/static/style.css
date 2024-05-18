@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+*{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+  overflow-x: hidden;
+}
+@font-face {
+  font-family: 'sf';
+  src: url('fonts/SF-Pro-Text-Regular.otf');
+}
+
+
+.upload-container {
+  display: flex;
+  align-items: center;
+  padding-left:350px
+}
+
+.upload-button {
+  background-color: #007bff; /* Adjust background color as desired */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  /* Add hover effects, shadows, etc. for a more modern look */
+}
+
+.upload-button:hover {
+  background-color: #0069d9; /* Adjust hover color as desired */
+}
+
+/* Nav */
+nav {
+  height: 70px;
+  background: rgb(125, 119, 119);
+  color: rgb(255, 255, 255);
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+}
+
+
+/* Nav */
+nav {
+  height: 70px;
+  background: rgb(20, 20, 20);
+  color: rgb(220, 220, 220);
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+}
+nav svg {
+  display: none;
+}
+.logo h2 {
+  text-decoration: overline;
+  font-style: italic;
+  color: rgb(0, 206, 206);
+  cursor: pointer;
+  margin: 0 0.5rem;
+}
+.nav-items {
+  display: flex;
+  justify-content: space-between;
+}
+.overview,
+.account {
+  display: flex;
+}
+.overview {
+  margin-right: 4rem;
+}
+.nav-items h3 {
+  display: none;
+}
+nav li {
+  list-style: none;
+  margin: 0 0.5rem;
+}
+nav a {
+  text-decoration: none;
+  color: rgb(220, 220, 220);
+}
+nav a:hover {
+  color: #a0ebfd;
+}
+nav a::after {
+  content: "";
+  display: block;
+  height: 3px;
+  background: #a0ebfd;
+  width: 0%;
+  transition: all ease-in-out 300ms;
+}
+nav a:hover::after {
+  width: 100%;
+}
+#check,
+.menu {
+  display: none;
+}

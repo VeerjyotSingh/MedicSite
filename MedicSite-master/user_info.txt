@@ -1,0 +1,7 @@
+name: veerjyot singh
+age: 123
+place: delhi
+smoking: nope
+previous_disease: nope
+phone: 1231456789
+email: veerjyot.sammi1@gmail.com
