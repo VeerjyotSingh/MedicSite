@@ -1,7 +1,7 @@
-name: deaq
+name: veerjyot singh
 age: 123
-place: EGRW
-smoking: DEFRW
-previous_disease: FVADS
-phone: 123456789
-email: 123@gmail.com
+place: delhi
+smoking: nope
+previous_disease: nope
+phone: 1231456789
+email: veerjyot.sammi1@gmail.com

@@ -1,4 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+import sounddevice
+import soundfile
+from flask import Flask, render_template, request, redirect, url_for
 import os
 from newsapi import NewsApiClient
 
