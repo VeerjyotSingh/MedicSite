@@ -1,7 +1,7 @@
-name: sc
-age: 12
-place: 12
-smoking: 12
-previous_disease: 12
-phone: 12
-email: 1@gmail.com
+name: veerjyot singh
+age: 123
+place: delhi
+smoking: nope
+previous_disease: nope
+phone: 1231456789
+email: veerjyot.sammi1@gmail.com
