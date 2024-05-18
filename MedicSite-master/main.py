@@ -9,7 +9,7 @@ app = Flask(__name__)
 api_key = 'a7c40948db6d454aa8ee3f7d5754234b'
 
 @app.route("/")
-def about():
+def home():
     return render_template('index.html')
 
 @app.route("/news")
@@ -82,6 +82,7 @@ def record():
         'place': request.form['place'],
         'smoking': request.form['smoking'],
         'previous_disease': request.form['previous_disease'],
+        'symptoms': request.form['symptoms'],
         'phone': request.form['phone'],
         'email': request.form['email']
     }

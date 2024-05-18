@@ -1,0 +1,7 @@
+name: sc
+age: 12
+place: 12
+smoking: 12
+previous_disease: 12
+phone: 12
+email: 1@gmail.com
