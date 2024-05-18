@@ -5,20 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8189e33d-ae48-4650-b6e4-51826e3453e6" name="Changes" comment="create Procfile">
+      <change beforePath="$PROJECT_DIR$/.idea/MedicSite.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MedicSite.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/contact.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/contact.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/breastcancer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/breastcancer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/locator.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/locator.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/lungcancer/lungcancer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lungcancer/lungcancer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/lungcancer/lungcancer_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lungcancer/lungcancer_info.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/lungcancer/record3.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lungcancer/record3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/meddit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/meddit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/news.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/news.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/onlinetest.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/onlinetest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/skincancer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/skincancer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_info.txt" beforeDir="false" afterPath="$PROJECT_DIR$/user_info.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,12 +32,12 @@
     &quot;assignee&quot;: &quot;VeerjyotSingh&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/VeerjyotSingh/MedicSite.git&quot;,
-    &quot;accountId&quot;: &quot;04e8f05d-c28e-47c8-8ab4-9738caa3f8d1&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/VeerjyotSingh/MedicSite.git",
+    "accountId": "05a955b9-3798-4105-98cf-c6101fa8799b"
   }
-}</component>
+}]]></component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -60,17 +50,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Python.chatbot.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.predict.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Python.chatbot.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.predict.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/templates/lungcancer" />
@@ -111,7 +102,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-0509580d9d50-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.14494.241" />
+        <option value="bundled-python-sdk-babbdf50b680-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.15989.155" />
       </set>
     </attachedChunks>
   </component>
