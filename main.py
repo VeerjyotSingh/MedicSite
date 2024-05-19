@@ -128,5 +128,9 @@ def record_audio():
 def reaction():
     return render_template("onlinetest/reaction.html")
 
+@app.route("/num_seq")
+def num_seq():
+    return render_template("onlinetest/numsequence.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
