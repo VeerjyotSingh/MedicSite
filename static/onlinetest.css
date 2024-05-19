@@ -2,7 +2,7 @@
             font-family: Arial, sans-serif;
             background-color: #f7f7f7;
             margin: 0;
-            padding: 20px;
+            ;
         }
         #reaction-time {
             text-align: center;
@@ -43,7 +43,7 @@
             margin: 0 auto;
         }
         .card {
-            background-color: #fff;
+
             border: 1px solid #ddd;
             border-radius: 12px;
             width: 300px;
@@ -52,6 +52,8 @@
             text-align: center;
             margin: 20px;
             transition: transform 0.3s, box-shadow 0.3s;
+
+
         }
         .card:hover {
             transform: translateY(-5px);
@@ -68,7 +70,8 @@
         .card h2 {
             font-size: 1.5em;
             margin: 20px 0;
-            color: #333;
+            color: #fffff;
+            ;
         }
         .card p {
             font-size: 1.1em;
