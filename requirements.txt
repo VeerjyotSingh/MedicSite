@@ -3,5 +3,3 @@ soundfile~=0.12.1
 Flask~=3.0.3
 newsapi-python~=0.2.7
 gunicorn~=22.0.0
-portaudio==19.6.0
-PyAudio~=0.2.14
