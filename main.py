@@ -52,7 +52,7 @@ def contact():
 
 @app.route("/test")
 def test():
-    return render_template("onlinetest.html")
+    return render_template("onlinetest/onlinetest.html")
 
 #handling lung cancer
 app.config['UPLOAD_FOLDER'] = 'uploads'
@@ -123,6 +123,10 @@ def record_audio():
     soundfile.write(file_path, recording, samplerate)
 
     return 'OK'
+
+@app.route("/reaction")
+def reaction():
+    return render_template("onlinetest/reaction.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
