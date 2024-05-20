@@ -132,5 +132,10 @@ def reaction():
 def num_seq():
     return render_template("onlinetest/numsequence.html")
 
+@app.route("/verbal")
+def verbal():
+    return render_template("onlinetest/verbal.html")
+
+
 if __name__ == "__main__":
     app.run(debug=True)
