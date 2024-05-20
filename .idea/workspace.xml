@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8189e33d-ae48-4650-b6e4-51826e3453e6" name="Changes" comment="Aryan:made reaction time">
+    <list default="true" id="8189e33d-ae48-4650-b6e4-51826e3453e6" name="Changes" comment="render error">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/onlinetest.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/onlinetest.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/breastcancer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/breastcancer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/lungcancer/lungcancer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lungcancer/lungcancer.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/onlinetest/onlinetest.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/onlinetest/onlinetest.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,6 +27,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -31,12 +40,12 @@
     &quot;assignee&quot;: &quot;VeerjyotSingh&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/VeerjyotSingh/MedicSite.git&quot;,
-    &quot;accountId&quot;: &quot;05a955b9-3798-4105-98cf-c6101fa8799b&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/VeerjyotSingh/MedicSite.git",
+    "accountId": "04e8f05d-c28e-47c8-8ab4-9738caa3f8d1"
   }
-}</component>
+}]]></component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -102,7 +111,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-babbdf50b680-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.15989.155" />
+        <option value="bundled-python-sdk-0509580d9d50-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.14494.241" />
       </set>
     </attachedChunks>
   </component>
@@ -131,12 +140,74 @@
       <option name="project" value="LOCAL" />
       <updated>1716104042526</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="create requirements.txt">
+      <option name="closed" value="true" />
+      <created>1716105300367</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1716105300367</updated>
+    </task>
+    <task id="LOCAL-00004" summary="made the reaction time card">
+      <option name="closed" value="true" />
+      <created>1716109221680</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1716109221680</updated>
+    </task>
+    <task id="LOCAL-00005" summary="made the number memory">
+      <option name="closed" value="true" />
+      <created>1716112107884</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1716112107884</updated>
+    </task>
+    <task id="LOCAL-00006" summary="added gunicorn to requirements.txt">
+      <option name="closed" value="true" />
+      <created>1716112573156</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1716112573157</updated>
+    </task>
+    <task id="LOCAL-00007" summary="minor changes">
+      <option name="closed" value="true" />
+      <created>1716113041120</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1716113041120</updated>
+    </task>
+    <task id="LOCAL-00008" summary="render error">
+      <option name="closed" value="true" />
+      <created>1716115022794</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1716115022794</updated>
+    </task>
+    <task id="LOCAL-00009" summary="render error">
+      <option name="closed" value="true" />
+      <created>1716115492025</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1716115492025</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="create Procfile" />
     <MESSAGE value="Aryan:made reaction time" />
-    <option name="LAST_COMMIT_MESSAGE" value="Aryan:made reaction time" />
+    <MESSAGE value="create requirements.txt" />
+    <MESSAGE value="made the reaction time card" />
+    <MESSAGE value="made the number memory" />
+    <MESSAGE value="added gunicorn to requirements.txt" />
+    <MESSAGE value="minor changes" />
+    <MESSAGE value="render error" />
+    <option name="LAST_COMMIT_MESSAGE" value="render error" />
   </component>
 </project>
