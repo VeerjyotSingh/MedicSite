@@ -34,11 +34,12 @@
 <section></section>
 
 
-    <div id="word" style="padding-top:50px;">Press Start to begin</div>
+    <div id="word" style="padding-top:50px">Press Start to begin</div>
     <button onclick="startTest()">Start</button>
     <button id="seenBtn" onclick="seen()" disabled>Seen</button>
     <button id="newWordBtn" onclick="newWord()" disabled>New</button>
     <div id="score">Score: 0</div>
+    <div id="status">Incorrect!</div>
     <script>
         const words = [
             "apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "honeydew",
@@ -55,6 +56,7 @@
             document.getElementById('score').innerText = "Score: " + score;
             document.getElementById('seenBtn').disabled = false;
             document.getElementById('newWordBtn').disabled = false;
+            document.getElementById('status').style.visibility = 'hidden';
             nextWord();
         }
 
@@ -67,9 +69,10 @@
             if (seenWords.includes(currentWord)) {
                 score++;
                 document.getElementById('score').innerText = "Score: " + score;
+                document.getElementById('status').style.visibility = 'hidden';
                 nextWord();
             } else {
-                alert("Incorrect! Game Over.");
+                document.getElementById('status').style.visibility = 'visible';
                 resetTest();
             }
         }
@@ -79,9 +82,10 @@
                 seenWords.push(currentWord);
                 score++;
                 document.getElementById('score').innerText = "Score: " + score;
+                document.getElementById('status').style.visibility = 'hidden';
                 nextWord();
             } else {
-                alert("Incorrect! Game Over.");
+                document.getElementById('status').style.visibility = 'visible';
                 resetTest();
             }
         }
