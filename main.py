@@ -48,7 +48,7 @@ def breastcancer():
 
 @app.route("/contact")
 def contact():
-    return render_template("contact.html")
+    return render_template("contact/contact.html")
 
 @app.route("/test")
 def test():
