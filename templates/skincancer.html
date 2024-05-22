@@ -58,7 +58,7 @@
       </div>
 </nav>
 
-  <section> <div class=" bg-black text-white col-md-6">
+  <section> <Center> <div class=" bg-black text-white col-md-7">
     <form method="post" class="bg-black text-white border border-white">
         <label for="name" class="form-label">Name:</label>
         <input type="text" id="name" name="name" class="bg-dark text-white border-white" required>
@@ -78,8 +78,14 @@
         <label for="email" class="form-label">Email:</label>
         <input type="email" id="email" name="email" class="bg-dark text-white border-white" required>
 
+        <div class="input-group mb-3" style="padding-top:20px">
+  <input type="file" class="form-control text-white bg-dark" id="inputGroupFile02">
+</div>
+        <button onclick="window.location.href='{{ url_for('skn_info') }}';" style="padding: 20px" class="btn btn-outline-info">
+            Skin Cancer Info
+        </button>
 
-        <button type="submit" style="padding: 20px" >Next</button>
+        <button type="submit" style="padding: 20px" class="btn btn-outline-success">Next</button>
     </form>
    </section>
   </body>

@@ -136,6 +136,9 @@ def num_seq():
 def verbal():
     return render_template("onlinetest/verbal.html")
 
+@app.route("/skn_info")
+def skn_info():
+    return render_template("skn_info.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
