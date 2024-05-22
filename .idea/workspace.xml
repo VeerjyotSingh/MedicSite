@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8189e33d-ae48-4650-b6e4-51826e3453e6" name="Changes" comment="Aryan:made verbal test minor changes">
-      <change afterPath="$PROJECT_DIR$/templates/contact/submitted.html" afterDir="false" />
+    <list default="true" id="8189e33d-ae48-4650-b6e4-51826e3453e6" name="Changes" comment="Aryan:made reaction time">
+      <change afterPath="$PROJECT_DIR$/static/verbal.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/onlinetest/verbal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/contact.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/contact.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contact/contact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/onlinetest/verbal.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/onlinetest/verbal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/onlinetest/onlinetest.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/onlinetest/onlinetest.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,11 +66,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\atlar\PycharmProjects\MedicSite\templates\contact" />
       <recent name="C:\Users\atlar\PycharmProjects\MedicSite\templates\onlinetest" />
       <recent name="$PROJECT_DIR$/templates/lungcancer" />
       <recent name="$PROJECT_DIR$/templates" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/static" />
     </key>
   </component>
   <component name="RunManager">
@@ -134,38 +134,12 @@
       <option name="project" value="LOCAL" />
       <updated>1716104042526</updated>
     </task>
-    <task id="LOCAL-00003" summary="Aryan:made verbal test">
-      <option name="closed" value="true" />
-      <created>1716219617318</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1716219617318</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Aryan:made verbal test minor changes">
-      <option name="closed" value="true" />
-      <created>1716279188446</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1716279188446</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Aryan:made verbal test minor changes">
-      <option name="closed" value="true" />
-      <created>1716281922051</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1716281922051</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="create Procfile" />
     <MESSAGE value="Aryan:made reaction time" />
-    <MESSAGE value="Aryan:made verbal test" />
-    <MESSAGE value="Aryan:made verbal test minor changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Aryan:made verbal test minor changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aryan:made reaction time" />
   </component>
 </project>
