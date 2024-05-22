@@ -1,16 +1,8 @@
- body {
-
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
-
-
-        }
+body
         #word {
             font-size: 32px;
             margin-bottom: 20px;
-            color: #333;
+            color: #frff;
             font-weight: bold;
         }
         button {
@@ -30,5 +22,12 @@
         #score {
             margin-top: 20px;
             font-size: 20px;
-            color: #555;
+            color: #fff;
+        }
+        #status {
+            margin-top: 10px;
+            font-size: 24px;
+            color: red;
+            font-weight: bold;
+            visibility: hidden;
         }
