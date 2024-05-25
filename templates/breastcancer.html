@@ -28,5 +28,35 @@
    </div>
    </div>
 </nav>
+<section></section> <Center> <div class=" bg-black text-white col-md-7">
+    <form method="post" class="bg-black text-white border border-white">
+        <label for="name" class="form-label">Name:</label>
+        <input type="text" id="name" name="name" class="bg-dark text-white border-white" required>
+
+        <label for="age" class="form-label">Age:</label>
+        <input type="number" id="age" name="age" class="bg-dark text-white border-white" required>
+
+        <label for="place" class="form-label">Place:</label>
+        <input type="text" id="place" name="place" class="bg-dark text-white border-white" required>
+
+        <label for="previous_disease" class="form-label">Previous Disease:</label>
+        <input type="text" id="previous_disease" name="previous_disease" class="bg-dark text-white border-white" required>
+
+        <label for="phone" class="form-label">Phone:</label>
+        <input type="tel" id="phone" name="phone" class="bg-dark text-white border-white" required>
+
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" id="email" name="email" class="bg-dark text-white border-white" required>
+
+        <div class="input-group mb-3" style="padding-top:20px">
+  <input type="file" class="form-control text-white bg-dark" id="inputGroupFile02">
+</div>
+        <button onclick="window.location.href='{{ url_for('') }}';" style="padding: 20px" class="btn btn-outline-info">
+            Skin Cancer Info
+        </button>
+
+        <button type="submit" style="padding: 20px" class="btn btn-outline-success">Next</button>
+    </form>
+
 </body>
 </html>
