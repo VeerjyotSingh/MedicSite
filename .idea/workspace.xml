@@ -5,10 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8189e33d-ae48-4650-b6e4-51826e3453e6" name="Changes" comment="Aryan:made verbal test minor changes">
-      <change afterPath="$PROJECT_DIR$/static/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/breastcancer/breastcancerinfo.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/breastcancer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/breastcancer/breastcancer.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/news.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/news.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/lungcancer/lungcancer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lungcancer/lungcancer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/onlinetest/onlinetest.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/onlinetest/onlinetest.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,11 +67,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates/breastcancer" />
       <recent name="C:\Users\atlar\PycharmProjects\MedicSite\templates\contact" />
       <recent name="C:\Users\atlar\PycharmProjects\MedicSite\templates\onlinetest" />
       <recent name="$PROJECT_DIR$/templates/lungcancer" />
       <recent name="$PROJECT_DIR$/templates" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager">
@@ -81,7 +84,6 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.11 (MedicSite)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />

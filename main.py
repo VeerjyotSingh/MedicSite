@@ -44,7 +44,7 @@ def skincancer():
 
 @app.route("/breastcancer")
 def breastcancer():
-    return render_template('breastcancer.html')
+    return render_template('breastcancer/breastcancer.html')
 
 @app.route("/contact")
 def contact():
@@ -139,6 +139,10 @@ def verbal():
 @app.route("/skn_info")
 def skn_info():
     return render_template("skn_info.html")
+
+@app.route("/breast_cancer_info")
+def breastcancerinfo():
+    return render_template("breastcancer/breastcancerinfo.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
