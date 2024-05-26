@@ -40,7 +40,11 @@ def news():
 @app.route("/meddit")
 def meddit():
     add_in_db("hello world","Python")
-    return render_template('meddit.html')
+    cursor.execute("SELECT * FROM Meddit")
+    rows = cursor.fetchall()
+    for row in rows:
+        print(row)
+    return rows #render_template('meddit.html')
 
 @app.route("/locator")
 def locator():
