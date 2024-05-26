@@ -3,10 +3,17 @@ import soundfile
 from flask import Flask, render_template, request, redirect, url_for
 import os
 from newsapi import NewsApiClient
+import sqlite3
 
 app = Flask(__name__)
 
-api_key = 'a7c40948db6d454aa8ee3f7d5754234b'
+#making a database
+#connecting or creating a database
+db = sqlite3.connect("contact.db", check_same_thread=False)
+#creating a cursor to point to that database
+cursor = db.cursor()
+#creating a table for Meddit. only need to run once
+#cursor.execute("CREATE TABLE Meddit (id INTEGER PRIMARY KEY, post varchar(250) NOT NULL, user varchar(250) NOT NULL)")
 
 @app.route("/")
 def about():
@@ -32,6 +39,7 @@ def news():
 
 @app.route("/meddit")
 def meddit():
+    add_in_db("hello world","Python")
     return render_template('meddit.html')
 
 @app.route("/locator")
@@ -143,6 +151,20 @@ def skn_info():
 @app.route("/breast_cancer_info")
 def breastcancerinfo():
     return render_template("breastcancer/breastcancerinfo.html")
+
+def add_in_db(post, user):
+  """Inserts a post and user into the Meddit table with an auto-incrementing ID.
+
+  Args:
+    post: The content of the post.
+    user: The username of the user who created the post.
+  """
+
+  cursor.execute("""
+      INSERT INTO Meddit (post, user)
+      VALUES (?, ?)
+  """, (post, user))
+  db.commit()
 
 if __name__ == "__main__":
     app.run(debug=True)
