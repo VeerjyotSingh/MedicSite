@@ -77,10 +77,15 @@
 
         <label for="email" class="form-label">Email:</label>
         <input type="email" id="email" name="email"class="bg-dark text-white border-white" required>
-        <button onclick="window.location.href='{{ url_for('disease_info_page') }}';" style="padding: 20px" class="btn btn-outline-secondary">
+
+        <div class="input-group mb-3" style="padding-top:20px">
+            <input type="file" class="form-control text-white bg-dark" id="inputGroupFile02"> </div>
+
+        <button onclick="window.location.href='{{ url_for('disease_info_page') }}';" style="padding: 20px" class="btn btn-outline-info">
             OpenAI Disease Info
         </button>
-        <button type="submit" style="padding: 20px" class="btn btn-outline-primary">Next</button>
+
+        <button type="submit" style="padding: 20px" class="btn btn-outline-success">Next</button>
     </form>
        </div>
    </section>
