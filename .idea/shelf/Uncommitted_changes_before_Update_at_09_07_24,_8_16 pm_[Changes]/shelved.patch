@@ -1,0 +1,247 @@
+Index: main.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import sounddevice\nimport soundfile\nfrom flask import Flask, render_template, request, redirect, url_for\nimport os\nfrom newsapi import NewsApiClient\nimport sqlite3\n\napp = Flask(__name__)\n\n#making a database\n#connecting or creating a database\ndb = sqlite3.connect(\"contact.db\", check_same_thread=False)\n#creating a cursor to point to that database\ncursor = db.cursor()\n#creating a table for Meddit. only need to run once\n#cursor.execute(\"CREATE TABLE Meddit (id INTEGER PRIMARY KEY, post varchar(250) NOT NULL, user varchar(250) NOT NULL)\")\n\n@app.route(\"/\")\ndef about():\n    return render_template('index.html')\n\n@app.route(\"/news\")\ndef news():\n    # Create a NewsApiClient object\n    newsapi = NewsApiClient(api_key=api_key)\n\n    # Get top headlines\n    top_headlines = newsapi.get_top_headlines(\n                                          category='health',\n                                          language='en',\n                                          country='in')\n\n    # Extract articles\n    articles = top_headlines['articles']\n\n    length = len(articles)\n    return render_template('news.html', articles=articles, len = length)\n\n\n@app.route(\"/meddit\")\ndef meddit():\n    add_in_db(\"hello world\",\"Python\")\n    cursor.execute(\"SELECT * FROM Meddit\")\n    rows = cursor.fetchall()\n    for row in rows:\n        print(row)\n    return rows #render_template('meddit.html')\n\n@app.route(\"/locator\")\ndef locator():\n    return render_template('locator.html')\n\n@app.route(\"/skincancer\")\ndef skincancer():\n    return render_template('skincancer.html')\n\n@app.route(\"/breastcancer\")\ndef breastcancer():\n    return render_template('breastcancer/breastcancer.html')\n\n@app.route(\"/contact\")\ndef contact():\n    return render_template(\"contact/contact.html\")\n\n@app.route(\"/test\")\ndef test():\n    return render_template(\"onlinetest/onlinetest.html\")\n\n#handling lung cancer\napp.config['UPLOAD_FOLDER'] = 'uploads'\napp.config['USER_INFO_FILE'] = 'user_info.txt'\n\n# Mapping each step to its corresponding recording duration\nRECORDING_DURATIONS = {\n    'Breathing Deep': 11,\n    'Breathing Shallow': 8,\n    'Cough Heavy': 5,\n    'Cough Shallow': 5,\n    'Vowel A': 8,\n    'Vowel E': 8,\n    'Vowel O': 8,\n    'Counting Fast': 5,\n    'Normal': 10\n}\n\n@app.route(\"/lungcancer\")\ndef lungcancer():\n    return render_template('lungcancer/lungcancer.html')\n@app.route('/record', methods=['POST'])\ndef record():\n    user_info = {\n        'name': request.form['name'],\n        'age': request.form['age'],\n        'place': request.form['place'],\n        'smoking': request.form['smoking'],\n        'previous_disease': request.form['previous_disease'],\n        'phone': request.form['phone'],\n        'email': request.form['email']\n    }\n\n    # Save user info to a text file\n    with open(app.config['USER_INFO_FILE'], 'w') as file:\n        for key, value in user_info.items():\n            file.write(f'{key}: {value}\\n')\n\n    return redirect(url_for('record_page'))\n\n@app.route('/record_page')\ndef record_page():\n    return render_template('lungcancer/record3.html', recording_durations=RECORDING_DURATIONS)\n\n\n@app.route(\"/disease_info_page\")\ndef disease_info_page():\n    return render_template(\"lungcancer/lungcancer_info.html\")\n\n@app.route('/record_audio', methods=['POST'])\ndef record_audio():\n    audio_step = request.form['audio_step']\n\n    # Create the uploads folder if it doesn't exist\n    if not os.path.exists(app.config['UPLOAD_FOLDER']):\n        os.makedirs(app.config['UPLOAD_FOLDER'])\n\n    # Set the file path for the recorded audio\n    file_path = os.path.join(app.config['UPLOAD_FOLDER'], f'{audio_step.replace(\" \", \"_\")}.wav')\n\n    # Record audio using sounddevice\n    duration = RECORDING_DURATIONS.get(audio_step, 5)  # Default to 5 seconds if step not found\n    samplerate = 48000\n    recording = sounddevice.rec(int(samplerate * duration), samplerate=samplerate, channels=1, dtype='int16')\n    sounddevice.wait()\n\n    # Save the recorded audio data to a file\n    soundfile.write(file_path, recording, samplerate)\n\n    return 'OK'\n\n@app.route(\"/reaction\")\ndef reaction():\n    return render_template(\"onlinetest/reaction.html\")\n\n@app.route(\"/num_seq\")\ndef num_seq():\n    return render_template(\"onlinetest/numsequence.html\")\n\n@app.route(\"/verbal\")\ndef verbal():\n    return render_template(\"onlinetest/verbal.html\")\n\n@app.route(\"/skn_info\")\ndef skn_info():\n    return render_template(\"skn_info.html\")\n\n@app.route(\"/breast_cancer_info\")\ndef breastcancerinfo():\n    return render_template(\"breastcancer/breastcancerinfo.html\")\n\ndef add_in_db(post, user):\n  \"\"\"Inserts a post and user into the Meddit table with an auto-incrementing ID.\n\n  Args:\n    post: The content of the post.\n    user: The username of the user who created the post.\n  \"\"\"\n\n  cursor.execute(\"\"\"\n      INSERT INTO Meddit (post, user)\n      VALUES (?, ?)\n  \"\"\", (post, user))\n  db.commit()\n\nif __name__ == \"__main__\":\n    app.run(debug=True)
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/main.py b/main.py
+--- a/main.py	(revision f5c62592913784e759e0ccbf5c282d921fca4fa3)
++++ b/main.py	(date 1720536304282)
+@@ -2,6 +2,7 @@
+ import soundfile
+ from flask import Flask, render_template, request, redirect, url_for
+ import os
++from google.auth import api_key
+ from newsapi import NewsApiClient
+ import sqlite3
+ 
+@@ -42,8 +43,6 @@
+     add_in_db("hello world","Python")
+     cursor.execute("SELECT * FROM Meddit")
+     rows = cursor.fetchall()
+-    for row in rows:
+-        print(row)
+     return rows #render_template('meddit.html')
+ 
+ @app.route("/locator")
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"8189e33d-ae48-4650-b6e4-51826e3453e6\" name=\"Changes\" comment=\"resolved issues in breast cancer page\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/main.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/main.py\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/requirements.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/requirements.txt\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Python Script\" />\n        <option value=\"HTML File\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitHubPullRequestSearchHistory\">{\n  &quot;lastFilter&quot;: {\n    &quot;state&quot;: &quot;OPEN&quot;,\n    &quot;assignee&quot;: &quot;VeerjyotSingh&quot;\n  }\n}</component>\n  <component name=\"GithubPullRequestsUISettings\">{\n  &quot;selectedUrlAndAccountId&quot;: {\n    &quot;url&quot;: &quot;https://github.com/VeerjyotSingh/MedicSite.git&quot;,\n    &quot;accountId&quot;: &quot;05a955b9-3798-4105-98cf-c6101fa8799b&quot;\n  }\n}</component>\n  <component name=\"ProblemsViewState\">\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 0\n}</component>\n  <component name=\"ProjectId\" id=\"2feLCgYxR4R0UjjjR7gjP21eKpZ\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,\n    &quot;Python.chatbot.executor&quot;: &quot;Run&quot;,\n    &quot;Python.main.executor&quot;: &quot;Run&quot;,\n    &quot;Python.predict.executor&quot;: &quot;Run&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\n    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,\n    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;\n  }\n}</component>\n  <component name=\"RecentsManager\">\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/templates/breastcancer\" />\n      <recent name=\"C:\\Users\\atlar\\PycharmProjects\\MedicSite\\templates\\contact\" />\n      <recent name=\"C:\\Users\\atlar\\PycharmProjects\\MedicSite\\templates\\onlinetest\" />\n      <recent name=\"$PROJECT_DIR$/templates/lungcancer\" />\n      <recent name=\"$PROJECT_DIR$/templates\" />\n    </key>\n  </component>\n  <component name=\"RunManager\">\n    <configuration name=\"main\" type=\"PythonConfigurationType\" factoryName=\"Python\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"MedicSite\" />\n      <option name=\"ENV_FILES\" value=\"\" />\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\n      <option name=\"PARENT_ENVS\" value=\"true\" />\n      <envs>\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\n      </envs>\n      <option name=\"SDK_HOME\" value=\"\" />\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$\" />\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/main.py\" />\n      <option name=\"PARAMETERS\" value=\"\" />\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\n      <option name=\"MODULE_MODE\" value=\"false\" />\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\n      <option name=\"INPUT_FILE\" value=\"\" />\n      <method v=\"2\" />\n    </configuration>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Python.main\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-python-sdk-babbdf50b680-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.15989.155\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"8189e33d-ae48-4650-b6e4-51826e3453e6\" name=\"Changes\" comment=\"\" />\n      <created>1714156470453</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1714156470453</updated>\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"create Procfile\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1715694984218</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1715694984218</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Aryan:made reaction time\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1716104042526</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1716104042526</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"Aryan:made verbal test\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1716219617318</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1716219617318</updated>\n    </task>\n    <task id=\"LOCAL-00004\" summary=\"Aryan:made verbal test minor changes\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1716279188446</created>\n      <option name=\"number\" value=\"00004\" />\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1716279188446</updated>\n    </task>\n    <task id=\"LOCAL-00005\" summary=\"Aryan:made verbal test minor changes\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1716281922051</created>\n      <option name=\"number\" value=\"00005\" />\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1716281922051</updated>\n    </task>\n    <task id=\"LOCAL-00006\" summary=\"resolved issues in breast cancer page\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1716637740937</created>\n      <option name=\"number\" value=\"00006\" />\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1716637740937</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"7\" />\n    <servers />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"create Procfile\" />\n    <MESSAGE value=\"Aryan:made reaction time\" />\n    <MESSAGE value=\"Aryan:made verbal test\" />\n    <MESSAGE value=\"Aryan:made verbal test minor changes\" />\n    <MESSAGE value=\"resolved issues in breast cancer page\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"resolved issues in breast cancer page\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision f5c62592913784e759e0ccbf5c282d921fca4fa3)
++++ b/.idea/workspace.xml	(date 1720536386246)
+@@ -4,10 +4,46 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="8189e33d-ae48-4650-b6e4-51826e3453e6" name="Changes" comment="resolved issues in breast cancer page">
++    <list default="true" id="8189e33d-ae48-4650-b6e4-51826e3453e6" name="Changes" comment="created a database">
++      <change beforePath="$PROJECT_DIR$/.idea/MedicSite.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MedicSite.iml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/chatbot.py" beforeDir="false" afterPath="$PROJECT_DIR$/chatbot.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/contact.db" beforeDir="false" afterPath="$PROJECT_DIR$/contact.db" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/predict.py" beforeDir="false" afterPath="$PROJECT_DIR$/predict.py" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/static/contact.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/contact.css" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/static/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/index.css" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/static/onlinetest.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/onlinetest.css" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/style.css" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/static/verbal.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/verbal.css" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/templates/breastcancer/breastcancer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/breastcancer/breastcancer.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/templates/breastcancer/breastcancerinfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/breastcancer/breastcancerinfo.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/templates/contact/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contact/contact.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/templates/contact/submitted.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contact/submitted.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/templates/locator.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/locator.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/templates/lungcancer/lungcancer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lungcancer/lungcancer.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/templates/lungcancer/lungcancer_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lungcancer/lungcancer_info.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/templates/lungcancer/record3.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lungcancer/record3.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/templates/meddit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/meddit.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/templates/news.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/news.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/templates/onlinetest/numsequence.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/onlinetest/numsequence.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/templates/onlinetest/onlinetest.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/onlinetest/onlinetest.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/templates/onlinetest/reaction.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/onlinetest/reaction.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/templates/onlinetest/verbal.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/onlinetest/verbal.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/templates/skincancer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/skincancer.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/templates/skn_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/skn_info.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/uploads/Breathing_Deep.wav" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/Breathing_Deep.wav" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/uploads/Cough_Heavy.wav" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/Cough_Heavy.wav" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/uploads/Counting_Fast.wav" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/Counting_Fast.wav" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/uploads/Vowel_A.wav" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/Vowel_A.wav" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/user_info.txt" beforeDir="false" afterPath="$PROJECT_DIR$/user_info.txt" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -34,7 +70,7 @@
+   <component name="GithubPullRequestsUISettings">{
+   &quot;selectedUrlAndAccountId&quot;: {
+     &quot;url&quot;: &quot;https://github.com/VeerjyotSingh/MedicSite.git&quot;,
+-    &quot;accountId&quot;: &quot;05a955b9-3798-4105-98cf-c6101fa8799b&quot;
++    &quot;accountId&quot;: &quot;04e8f05d-c28e-47c8-8ab4-9738caa3f8d1&quot;
+   }
+ }</component>
+   <component name="ProblemsViewState">
+@@ -44,23 +80,28 @@
+   &quot;associatedIndex&quot;: 0
+ }</component>
+   <component name="ProjectId" id="2feLCgYxR4R0UjjjR7gjP21eKpZ" />
+-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
++  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
++    <ConfirmationsSetting value="2" id="Add" />
++  </component>
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+-    &quot;Python.chatbot.executor&quot;: &quot;Run&quot;,
+-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+-    &quot;Python.predict.executor&quot;: &quot;Run&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "ASKED_ADD_EXTERNAL_FILES": "true",
++    "DefaultHtmlFileTemplate": "HTML File",
++    "Python.MedicSite.executor": "Run",
++    "Python.chatbot.executor": "Run",
++    "Python.main.executor": "Run",
++    "Python.predict.executor": "Run",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "git-widget-placeholder": "master",
++    "ignore.virus.scanning.warn.message": "true",
++    "last_opened_file_path": "/Users/veerjyotsammi/Veerjyot/Computer/Python/PyCharm/MedicSite",
++    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+   }
+-}</component>
++}]]></component>
+   <component name="RecentsManager">
+     <key name="MoveFile.RECENT_KEYS">
+       <recent name="$PROJECT_DIR$/templates/breastcancer" />
+@@ -71,7 +112,7 @@
+     </key>
+   </component>
+   <component name="RunManager">
+-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
++    <configuration name="MedicSite" type="PythonConfigurationType" factoryName="Python" temporary="true">
+       <module name="MedicSite" />
+       <option name="ENV_FILES" value="" />
+       <option name="INTERPRETER_OPTIONS" value="" />
+@@ -80,6 +121,7 @@
+         <env name="PYTHONUNBUFFERED" value="1" />
+       </envs>
+       <option name="SDK_HOME" value="" />
++      <option name="SDK_NAME" value="Python 3.12 (geminiAPI)" />
+       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+       <option name="IS_MODULE_SDK" value="false" />
+       <option name="ADD_CONTENT_ROOTS" value="true" />
+@@ -95,14 +137,14 @@
+     </configuration>
+     <recent_temporary>
+       <list>
+-        <item itemvalue="Python.main" />
++        <item itemvalue="Python.MedicSite" />
+       </list>
+     </recent_temporary>
+   </component>
+   <component name="SharedIndexes">
+     <attachedChunks>
+       <set>
+-        <option value="bundled-python-sdk-babbdf50b680-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.15989.155" />
++        <option value="bundled-python-sdk-5b207ade9991-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.17890.14" />
+       </set>
+     </attachedChunks>
+   </component>
+@@ -163,10 +205,41 @@
+       <option name="project" value="LOCAL" />
+       <updated>1716637740937</updated>
+     </task>
+-    <option name="localTasksCounter" value="7" />
++    <task id="LOCAL-00007" summary="created a database for meddit">
++      <option name="closed" value="true" />
++      <created>1716733106667</created>
++      <option name="number" value="00007" />
++      <option name="presentableId" value="LOCAL-00007" />
++      <option name="project" value="LOCAL" />
++      <updated>1716733106667</updated>
++    </task>
++    <task id="LOCAL-00008" summary="created a database">
++      <option name="closed" value="true" />
++      <created>1716734373201</created>
++      <option name="number" value="00008" />
++      <option name="presentableId" value="LOCAL-00008" />
++      <option name="project" value="LOCAL" />
++      <updated>1716734373201</updated>
++    </task>
++    <option name="localTasksCounter" value="9" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
++    <option name="RECENT_FILTERS">
++      <map>
++        <entry key="User">
++          <value>
++            <list>
++              <RecentGroup>
++                <option name="FILTER_VALUES">
++                  <option value="*" />
++                </option>
++              </RecentGroup>
++            </list>
++          </value>
++        </entry>
++      </map>
++    </option>
+     <option name="TAB_STATES">
+       <map>
+         <entry key="MAIN">
+@@ -178,11 +251,14 @@
+     </option>
+   </component>
+   <component name="VcsManagerConfiguration">
++    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+     <MESSAGE value="create Procfile" />
+     <MESSAGE value="Aryan:made reaction time" />
+     <MESSAGE value="Aryan:made verbal test" />
+     <MESSAGE value="Aryan:made verbal test minor changes" />
+     <MESSAGE value="resolved issues in breast cancer page" />
+-    <option name="LAST_COMMIT_MESSAGE" value="resolved issues in breast cancer page" />
++    <MESSAGE value="created a database for meddit" />
++    <MESSAGE value="created a database" />
++    <option name="LAST_COMMIT_MESSAGE" value="created a database" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/MedicSite.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<module type=\"PYTHON_MODULE\" version=\"4\">\n  <component name=\"NewModuleRootManager\">\n    <content url=\"file://$MODULE_DIR$\">\n      <excludeFolder url=\"file://$MODULE_DIR$/venv\" />\n    </content>\n    <orderEntry type=\"jdk\" jdkName=\"Python 3.12 (MedicSite)\" jdkType=\"Python SDK\" />\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\n  </component>\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/MedicSite.iml b/.idea/MedicSite.iml
+--- a/.idea/MedicSite.iml	(revision f5c62592913784e759e0ccbf5c282d921fca4fa3)
++++ b/.idea/MedicSite.iml	(date 1720536386234)
+@@ -2,6 +2,7 @@
+ <module type="PYTHON_MODULE" version="4">
+   <component name="NewModuleRootManager">
+     <content url="file://$MODULE_DIR$">
++      <excludeFolder url="file://$MODULE_DIR$/.venv" />
+       <excludeFolder url="file://$MODULE_DIR$/venv" />
+     </content>
+     <orderEntry type="jdk" jdkName="Python 3.12 (MedicSite)" jdkType="Python SDK" />

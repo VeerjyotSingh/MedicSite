@@ -28,7 +28,7 @@ def about():
 @app.route("/news")
 def news():
     # Create a NewsApiClient object
-    newsapi = NewsApiClient(api_key='your_news_api_key')
+    newsapi = NewsApiClient(api_key='a7c40948db6d454aa8ee3f7d5754234b')
 
     # Get top headlines
     top_headlines = newsapi.get_top_headlines(
