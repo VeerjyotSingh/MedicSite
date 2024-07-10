@@ -30,6 +30,40 @@
    </div>
       </div>
 </nav>
-   <section></section>
-  </body>
+<div class="container h-screen p-0">  <div class="row h-full flex flex-col-reverse">
+    <div class="col-md-8 offset-md-2 overflow-auto pb-5">
+      <div class="posts-container">
+        <h2>Posts</h2>
+        <ul class="list-group">
+          {% for post in posts %}
+          <li class="list-group-item">
+            <h4>{{ post[1] }}</h4>
+            <p>{{ post[2] }}</p>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="post-form fixed bottom-0 w-full">
+      <div class="container">
+        <h2 class="mb-4">Add Your Post</h2>
+        <form method="POST" action="{{ url_for('meddit') }}">
+          <div class="form-group">
+            <label for="author">Your Name:</label>
+            <input type="text" class="form-control" id="author" name="author" placeholder="Enter your name" required>
+          </div>
+          <div class="form-group">
+            <label for="content">Post Content:</label>
+            <textarea class="form-control" id="content" name="content" rows="4" placeholder="Enter your post content" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit Post</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-pwDqusc2cgQ8pZ6/cAuG3Z7NtVRN1AX9vkiUWKe2k8t0XeI3jFyN0a9g2bpkvJPr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-b5/x4dVcFzP6dP1zELyOA7SNlOZ8f6tDvL2ndfxsUZw8gK1buYKPPb5Jq6DujgSM" crossorigin="anonymous"></script>
+</body>
 </html>

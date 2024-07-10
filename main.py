@@ -1,19 +1,25 @@
 import sounddevice
 import soundfile
-from flask import Flask, render_template, request, redirect, url_for
 import os
-from newsapi import NewsApiClient
 import sqlite3
+from flask import Flask, render_template, request, redirect, url_for
+from newsapi import NewsApiClient
 
 app = Flask(__name__)
 
-#making a database
-#connecting or creating a database
-db = sqlite3.connect("contact.db", check_same_thread=False)
-#creating a cursor to point to that database
-cursor = db.cursor()
-#creating a table for Meddit. only need to run once
-#cursor.execute("CREATE TABLE Meddit (id INTEGER PRIMARY KEY, post varchar(250) NOT NULL, user varchar(250) NOT NULL)")
+# Connect to SQLite database
+conn = sqlite3.connect("contact.db", check_same_thread=False)
+cursor = conn.cursor()
+
+# Create a table if it doesn't exist
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS Meddit (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        author TEXT NOT NULL,
+        content TEXT NOT NULL
+    )
+''')
+conn.commit()
 
 @app.route("/")
 def about():
@@ -22,7 +28,7 @@ def about():
 @app.route("/news")
 def news():
     # Create a NewsApiClient object
-    newsapi = NewsApiClient(api_key=api_key)
+    newsapi = NewsApiClient(api_key='your_news_api_key')
 
     # Get top headlines
     top_headlines = newsapi.get_top_headlines(
@@ -34,17 +40,23 @@ def news():
     articles = top_headlines['articles']
 
     length = len(articles)
-    return render_template('news.html', articles=articles, len = length)
+    return render_template('news.html', articles=articles, len=length)
 
-
-@app.route("/meddit")
+@app.route("/meddit", methods=['GET', 'POST'])
 def meddit():
-    add_in_db("hello world","Python")
-    cursor.execute("SELECT * FROM Meddit")
-    rows = cursor.fetchall()
-    for row in rows:
-        print(row)
-    return rows #render_template('meddit.html')
+    if request.method == 'POST':
+        author = request.form['author']
+        content = request.form['content']
+        # Insert data into database
+        cursor.execute('INSERT INTO Meddit (author, content) VALUES (?, ?)', (author, content))
+        conn.commit()
+        return redirect(url_for('meddit'))
+
+    # Retrieve data from database
+    cursor.execute('SELECT * FROM Meddit')
+    posts = cursor.fetchall()
+
+    return render_template('meddit.html', posts=posts)
 
 @app.route("/locator")
 def locator():
@@ -56,17 +68,17 @@ def skincancer():
 
 @app.route("/breastcancer")
 def breastcancer():
-    return render_template('breastcancer/breastcancer.html')
+    return render_template('breastcancer.html')
 
 @app.route("/contact")
 def contact():
-    return render_template("contact/contact.html")
+    return render_template("contact.html")
 
 @app.route("/test")
 def test():
-    return render_template("onlinetest/onlinetest.html")
+    return render_template("test.html")
 
-#handling lung cancer
+# Handling lung cancer recording
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['USER_INFO_FILE'] = 'user_info.txt'
 
@@ -85,7 +97,8 @@ RECORDING_DURATIONS = {
 
 @app.route("/lungcancer")
 def lungcancer():
-    return render_template('lungcancer/lungcancer.html')
+    return render_template('lungcancer.html')
+
 @app.route('/record', methods=['POST'])
 def record():
     user_info = {
@@ -107,12 +120,7 @@ def record():
 
 @app.route('/record_page')
 def record_page():
-    return render_template('lungcancer/record3.html', recording_durations=RECORDING_DURATIONS)
-
-
-@app.route("/disease_info_page")
-def disease_info_page():
-    return render_template("lungcancer/lungcancer_info.html")
+    return render_template('record3.html', recording_durations=RECORDING_DURATIONS)
 
 @app.route('/record_audio', methods=['POST'])
 def record_audio():
@@ -138,15 +146,15 @@ def record_audio():
 
 @app.route("/reaction")
 def reaction():
-    return render_template("onlinetest/reaction.html")
+    return render_template("reaction.html")
 
 @app.route("/num_seq")
 def num_seq():
-    return render_template("onlinetest/numsequence.html")
+    return render_template("numsequence.html")
 
 @app.route("/verbal")
 def verbal():
-    return render_template("onlinetest/verbal.html")
+    return render_template("verbal.html")
 
 @app.route("/skn_info")
 def skn_info():
@@ -154,21 +162,7 @@ def skn_info():
 
 @app.route("/breast_cancer_info")
 def breastcancerinfo():
-    return render_template("breastcancer/breastcancerinfo.html")
-
-def add_in_db(post, user):
-  """Inserts a post and user into the Meddit table with an auto-incrementing ID.
-
-  Args:
-    post: The content of the post.
-    user: The username of the user who created the post.
-  """
-
-  cursor.execute("""
-      INSERT INTO Meddit (post, user)
-      VALUES (?, ?)
-  """, (post, user))
-  db.commit()
+    return render_template("breastcancerinfo.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
