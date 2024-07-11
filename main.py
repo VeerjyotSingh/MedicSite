@@ -66,17 +66,13 @@ def locator():
 def skincancer():
     return render_template('skincancer.html')
 
-@app.route("/breastcancer")
-def breastcancer():
-    return render_template('breastcancer.html')
-
 @app.route("/contact")
 def contact():
-    return render_template("contact.html")
+    return render_template("contact/contact.html")
 
 @app.route("/test")
 def test():
-    return render_template("test.html")
+    return render_template("onlinetest/onlinetest.html")
 
 # Handling lung cancer recording
 app.config['UPLOAD_FOLDER'] = 'uploads'
@@ -97,7 +93,7 @@ RECORDING_DURATIONS = {
 
 @app.route("/lungcancer")
 def lungcancer():
-    return render_template('lungcancer.html')
+    return render_template('lungcancer/lungcancer.html')
 
 @app.route('/record', methods=['POST'])
 def record():
@@ -120,7 +116,7 @@ def record():
 
 @app.route('/record_page')
 def record_page():
-    return render_template('record3.html', recording_durations=RECORDING_DURATIONS)
+    return render_template('lungcancer/record3.html', recording_durations=RECORDING_DURATIONS)
 
 @app.route('/record_audio', methods=['POST'])
 def record_audio():
@@ -146,23 +142,23 @@ def record_audio():
 
 @app.route("/reaction")
 def reaction():
-    return render_template("reaction.html")
+    return render_template("onlinetest/reaction.html")
 
 @app.route("/num_seq")
 def num_seq():
-    return render_template("numsequence.html")
+    return render_template("onlinetest/numsequence.html")
 
 @app.route("/verbal")
 def verbal():
-    return render_template("verbal.html")
+    return render_template("onlinetest/verbal.html")
 
 @app.route("/skn_info")
 def skn_info():
     return render_template("skn_info.html")
 
-@app.route("/breast_cancer_info")
-def breastcancerinfo():
-    return render_template("breastcancerinfo.html")
+@app.route("/disease_info_page")
+def disease_info_page():
+    return render_template("lungcancer/lungcancer_info.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -4,16 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8189e33d-ae48-4650-b6e4-51826e3453e6" name="Changes" comment="created a database">
-      <change beforePath="$PROJECT_DIR$/.idea/MedicSite.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MedicSite.iml" afterDir="false" />
+    <list default="true" id="8189e33d-ae48-4650-b6e4-51826e3453e6" name="Changes" comment="meddit working">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact.db" beforeDir="false" afterPath="$PROJECT_DIR$/contact.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contact.db" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/breastcancer/breastcancer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/breastcancer/breastcancerinfo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/contact/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contact/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/contact/submitted.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contact/submitted.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/locator.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/locator.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/lungcancer/lungcancer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lungcancer/lungcancer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/lungcancer/lungcancer_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lungcancer/lungcancer_info.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/lungcancer/record3.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lungcancer/record3.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/meddit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/meddit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/Breathing_Deep.wav" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/Breathing_Deep.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/Cough_Heavy.wav" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/Cough_Heavy.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/Counting_Fast.wav" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/Counting_Fast.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/Vowel_A.wav" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/Vowel_A.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/news.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/news.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/onlinetest/numsequence.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/onlinetest/numsequence.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/onlinetest/onlinetest.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/onlinetest/onlinetest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/onlinetest/reaction.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/onlinetest/reaction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/onlinetest/verbal.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/onlinetest/verbal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/skincancer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/skincancer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/skn_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/skn_info.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,12 +48,12 @@
     &quot;assignee&quot;: &quot;VeerjyotSingh&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/VeerjyotSingh/MedicSite.git",
-    "accountId": "3482104e-b3eb-42d8-bd02-866b9843ce05"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/VeerjyotSingh/MedicSite.git&quot;,
+    &quot;accountId&quot;: &quot;3482104e-b3eb-42d8-bd02-866b9843ce05&quot;
   }
-}]]></component>
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -57,21 +68,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Python.MedicSite.executor&quot;: &quot;Run&quot;,
-    &quot;Python.chatbot.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.predict.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/veerjyotsammi/Veerjyot/Computer/Python/PyCharm/MedicSite&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Python.MedicSite.executor": "Run",
+    "Python.chatbot.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.predict.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "/Users/veerjyotsammi/Veerjyot/Computer/Python/PyCharm/MedicSite",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/templates/breastcancer" />
@@ -191,7 +202,23 @@
       <option name="project" value="LOCAL" />
       <updated>1716734373201</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="meddit working">
+      <option name="closed" value="true" />
+      <created>1720611629839</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1720611629840</updated>
+    </task>
+    <task id="LOCAL-00010" summary="meddit working">
+      <option name="closed" value="true" />
+      <created>1720611966470</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1720611966470</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -229,6 +256,7 @@
     <MESSAGE value="resolved issues in breast cancer page" />
     <MESSAGE value="created a database for meddit" />
     <MESSAGE value="created a database" />
-    <option name="LAST_COMMIT_MESSAGE" value="created a database" />
+    <MESSAGE value="meddit working" />
+    <option name="LAST_COMMIT_MESSAGE" value="meddit working" />
   </component>
 </project>
