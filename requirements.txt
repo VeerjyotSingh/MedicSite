@@ -1,6 +1,6 @@
-sounddevice~=0.2.1
-soundfile~=0.12.1
-Flask~=3.0.3
-newsapi-python~=0.2.7
-gunicorn~=22.0.0
-firebase-admin~=6.5.0
+sounddevice
+soundfile
+Flask
+newsapi-python
+gunicorn
+firebase-admin

@@ -27,20 +27,22 @@ def about():
 
 @app.route("/news")
 def news():
-    # Create a NewsApiClient object
-    newsapi = NewsApiClient(api_key='a7c40948db6d454aa8ee3f7d5754234b')
+    try:
+        newsapi = NewsApiClient(api_key="a7c40948db6d454aa8ee3f7d5754234b")
+        top_headlines = newsapi.get_top_headlines(
+            category='health',
+            language='en',
+            country='in')
 
-    # Get top headlines
-    top_headlines = newsapi.get_top_headlines(
-                                          category='health',
-                                          language='en',
-                                          country='in')
+        # Extract articles
+        articles = top_headlines.get('articles', [])
+        length = len(articles)
+        # Render the template with articles
+        return render_template('news.html', articles=articles, len=length)
 
-    # Extract articles
-    articles = top_headlines['articles']
-
-    length = len(articles)
-    return render_template('news.html', articles=articles, len=length)
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return render_template('news.html')
 
 @app.route("/meddit", methods=['GET', 'POST'])
 def meddit():
