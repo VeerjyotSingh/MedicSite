@@ -4,39 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Number Memory Test</title>
-    <link rel="stylesheet" href="static/onlinetest.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
         body {
+            background-color: black;
+            color: white;
+            font-family: 'Arial', sans-serif;
             margin: 0;
-            display: flex;
-            flex-direction: column;
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
         }
         #container {
+            background-color: #333;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             text-align: center;
-            background: #fff;
-            padding: 40px 20px;
+            width: 100%;
+            max-width: 400px;
+            margin: 50px auto;
+        }
+        #number-display {
+            font-size: 32px;
+            padding: 20px;
+            background-color: #444;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            margin-bottom: 20px;
+            min-height: 50px;
         }
-        #number-display, #result, #input-area {
-            font-size: 24px;
-            margin: 20px 0;
+        #input-area, #result {
+            margin-top: 20px;
         }
-        #startButton, #submitButton {
+        input[type="text"] {
+            padding: 10px;
+            width: 100%;
+            border: 2px solid #555;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            background-color: #222;
+            color: #fff;
+        }
+        button {
             padding: 10px 20px;
-            font-size: 16px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
+            font-size: 16px;
             cursor: pointer;
             transition: background-color 0.3s;
+            width: 100%;
         }
         #startButton {
             background-color: #007bff;
@@ -52,54 +67,51 @@
         #submitButton:hover {
             background-color: #218838;
         }
-        #input-area {
-            display: none;
+        #result {
+            font-size: 20px;
+            margin-top: 20px;
         }
-        input[type="text"] {
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 100%;
-            max-width: 200px;
-            margin-bottom: 20px;
+        nav.navbar {
+            border-bottom: 1px solid #444;
         }
     </style>
 </head>
 <body class="bg-black text-white">
-<nav class="navbar navbar-expand-lg bg-black border-bottom" data-bs-theme="dark">
-  <div class="container-fluid">
-       <a class="navbar-brand" href="{{ url_for('about') }}">MedicSite</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-     <li class="nav-item"><a href="{{ url_for('news') }}" class="nav-link">News</a></li>
-     <li class="nav-item"><a href="{{ url_for('meddit') }}" class="nav-link">Meddit</a></li>
-     <li class="nav-item"><a href="{{ url_for('locator') }}" class="nav-link">Locator</a></li>
-     <li class="nav-item"><a href="{{ url_for('contact') }}" class="nav-link">Contact</a></li>
-     <li class="nav-item"><a href="{{ url_for('test') }}" class="nav-link">Online Test</a></li>
-     <li class="nav-item"><a class="nav-link" href="{{ url_for('skincancer') }}">Skin Cancer</a></li>
-     <li class="nav-item"><a class="nav-link" href="{{ url_for('lungcancer') }}">Lung Cancer</a></li>
 
-    </ul>
-   </div>
-      </div>
-</nav>
-<div style="padding-top:50px;">
-    <div id="container" class="container bg-black border-white border">
-        <div id="number-display"></div>
-        <div id="input-area">
-            <p>Enter the number you saw:</p>
-            <input type="text" id="userInput">
-            <button id="submitButton">Submit</button>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-black border-bottom" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ url_for('about') }}">MedicSite</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a href="{{ url_for('news') }}" class="nav-link">News</a></li>
+                <li class="nav-item"><a href="{{ url_for('meddit') }}" class="nav-link">Meddit</a></li>
+                <li class="nav-item"><a href="{{ url_for('locator') }}" class="nav-link">Locator</a></li>
+                <li class="nav-item"><a href="{{ url_for('contact') }}" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="{{ url_for('test') }}" class="nav-link">Online Test</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('skincancer') }}">Skin Cancer</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('lungcancer') }}">Lung Cancer</a></li>
+            </ul>
         </div>
-        <div id="result"></div>
-        <button id="startButton">Start</button>
     </div>
+</nav>
+
+<!-- Number Memory Test Container -->
+<div id="container">
+    <div id="number-display">Ready to start?</div>
+    <div id="input-area" style="display:none;">
+        <p>Enter the number you saw:</p>
+        <input type="text" id="userInput">
+        <button id="submitButton">Submit</button>
+    </div>
+    <div id="result"></div>
+    <button id="startButton">Start</button>
 </div>
-    <script>
+
+<script>
     document.addEventListener('DOMContentLoaded', function () {
         const numberDisplay = document.getElementById('number-display');
         const startButton = document.getElementById('startButton');
@@ -133,18 +145,18 @@
                     numberDisplay.textContent = '';
                     inputArea.style.display = 'block';
                 }
-            }, 3000); // Number is shown for 3 seconds
+            }, 3000); // Show the number for 3 seconds
         }
 
         function submitAnswer() {
-            if (!testOngoing) return; // Ignore submission if test is not ongoing
+            if (!testOngoing) return;
 
             const userAnswer = userInput.value;
             if (userAnswer === numberToRemember) {
                 result.textContent = 'Correct! You remembered the number.';
                 result.style.color = '#28a745';
-                numberLength++; // Increase number length for next test
-                levelReached = numberLength - 1; // Update level reached
+                numberLength++; // Increase number length
+                levelReached = numberLength - 1; // Track level
             } else {
                 result.textContent = `Incorrect. You reached level ${levelReached}.`;
                 result.style.color = '#dc3545';
@@ -158,5 +170,7 @@
         submitButton.addEventListener('click', submitAnswer);
     });
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
