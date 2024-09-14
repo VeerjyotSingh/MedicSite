@@ -10,3 +10,4 @@ keras
 librosa
 numpy
 tensorflow
+pillow

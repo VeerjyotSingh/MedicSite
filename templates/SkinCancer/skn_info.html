@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+    <title>Skin Cancer Information</title>
+    <link rel="stylesheet" href="static/onlinetest.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        h3 {
+            color:#90EEEE;
+        }
+        p {
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color:#73FF73;
+        }
+
+        .section {
+            padding-left:20px;
+            margin-bottom: 40px;
+            padding-right: 20px;
+            padding-top: 20px;
+        }
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .subsection-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .highlight {
+            background-color: #f4f4f4;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body class="bg-black text-white" leftmargin="1px">
+<nav class="navbar navbar-expand-lg bg-black border-bottom" data-bs-theme="dark">
+  <div class="container-fluid">
+       <a class="navbar-brand" href="{{ url_for('about') }}">MedicSite</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+     <li class="nav-item"><a href="{{ url_for('news') }}" class="nav-link">News</a></li>
+     <li class="nav-item"><a href="{{ url_for('meddit') }}" class="nav-link">Meddit</a></li>
+     <li class="nav-item"><a href="{{ url_for('locator') }}" class="nav-link">Locator</a></li>
+     <li class="nav-item"><a href="{{ url_for('contact') }}" class="nav-link">Contact</a></li>
+     <li class="nav-item"><a href="{{ url_for('test') }}" class="nav-link">Online Test</a></li>
+     <li class="nav-item"><a class="nav-link" href="{{ url_for('skincancer') }}">Skin Cancer</a></li>
+     <li class="nav-item"><a class="nav-link" href="{{ url_for('lungcancer') }}">Lung Health</a></li>
+
+     <li class="nav-item"><a href="{{ url_for('chat') }}" class="nav-link">Chatbot</a></li>
+
+    </ul>
+   </div>
+      </div>
+</nav>
+    <section></section>
+
+    <div class="section">
+        <h1 class="section-title">Key Facts</h1>
+        <p>Skin cancer is a widespread concern, with over 5 million cases diagnosed globally each year. It encompasses several types, including basal cell carcinoma (BCC), squamous cell carcinoma (SCC), and melanoma. Excessive exposure to ultraviolet (UV) radiation from sunlight or tanning beds is the primary risk factor. Early detection is crucial for successful treatment outcomes.</p>
+    </div>
+    <div class="section">
+        <h2 class="section-title">Overview</h2>
+        <p>Skin cancer arises from the uncontrolled growth of skin cells, often triggered by exposure to ultraviolet (UV) radiation from the
+            sun or artificial sources like tanning beds. It is the most common type of cancer worldwide, affecting people of all skin types,
+            though those with fair skin are at higher risk. Skin cancer primarily develops on sun-exposed areas of the body, such as the face,
+            ears, neck, scalp, shoulders, and back. However, it can also occur in less exposed areas like the palms, soles, and under the nails.
+            The disease can manifest in several forms, with basal cell carcinoma, squamous cell carcinoma, and melanoma being the most prevalent.
+            While BCC and SCC are more common and generally less aggressive, melanoma is rarer but more likely to spread and can be deadly if not
+            detected early. Recognizing changes in the skin, such as new growths, sores that don’t heal, or changes in existing moles, is critical
+            for early detection. Regular skin checks and protective
+            measures against UV exposure are essential components of prevention.</p>
+    </div>
+    <div class="section">
+        <h2 class="section-title">Symptoms</h2>
+        <p>Skin cancer can present various symptoms that may signal an issue within the skin, such as:</p>
+        <ul>
+            <li>Changes in moles or existing skin lesions</li>
+            <li>Development of new growths on the skin</li>
+            <li>Sores that do not heal</li>
+            <li>Changes in skin texture or color</li>
+        </ul>
+        <p>Early symptoms of skin cancer may be mild or dismissed as common skin conditions, potentially leading to delayed diagnosis.</p>
+    </div>
+ <div class="section">
+ <h2 class="section-title">Prevention</h2>
+        <ul>
+            <li><strong>Sun Protection:</strong> Regular use of sunscreen with high SPF, wearing protective clothing, and seeking shade.</li>
+            <li><strong>Avoidance of Tanning Beds:</strong> Limiting exposure to artificial UV radiation sources.</li>
+            <li><strong>Regular Skin Checks:</strong> Performing self-examinations and scheduling regular skin checks with a dermatologist.</li>
+        </ul>
+
+        <p>Early treatment can prevent skin cancer from worsening and spreading to other areas of the body. Prevention of skin cancer involves both primary and secondary measures. Primary prevention focuses on reducing risk factors and promoting healthy behaviors to prevent the initial development of the disease. This includes practices such as sun protection, avoiding excessive UV exposure, and regular skin checks.</p>
+    </div>
+    <div class="section">
+        <h2 class="section-title">Diagnosis</h2>
+
+        <p>Diagnosis typically involves a visual examination followed by a biopsy of suspicious lesions.</p>
+    <ul>
+    <li><strong>Visual inspection:</strong> Examination of the skin for any abnormal growths, changes in moles, or lesions.</li>
+    <li><strong>Dermoscopy: </strong> Use of a handheld device with magnification and polarized light to examine skin lesions in more detail.</li>
+    <li><strong>Biopsy:</strong> Removal of a sample of suspicious skin tissue for examination under a microscope to determine if cancer cells are present.</li>
+    <li><strong>Skin imaging:</strong> Techniques such as ultrasound, MRI, or CT scans may be used to assess the extent of the cancer and whether it has spread to nearby tissues or lymph nodes.</li>
+    <li><strong>Sentinel lymph node biopsy:</strong> Removal and examination of nearby lymph nodes to determine if the cancer has spread beyond the skin.</li>
+</ul>
+    </div>
+    <div class="section">
+        <h2 class="section-title" color="Blue">Treatment and Care</h2>
+        <p>Treatments for lung cancer are based on the type of cancer, how much it has spread, and the person’s medical history. Early detection of lung cancer can lead to better treatments and outcomes. Treatments include:</p>
+       <ul>
+    <li><strong>Surgical excision: </strong>Removal of the cancerous lesion and a margin of surrounding healthy tissue to ensure complete removal.</li>
+    <li><strong>Mohs surgery: </strong>A specialized technique to remove skin cancer layer by layer, examining each layer under a microscope until no cancer cells remain.</li>
+    <li><strong>Radiation therapy:</strong> Using high-energy rays to destroy cancer cells, often used for cancers in areas difficult to treat with surgery.</li>
+    <li><strong>Chemotherapy: </strong>Medications that kill cancer cells or stop them from growing, sometimes used for advanced or metastatic skin cancer.</li>
+    <li><strong>Immunotherapy: </strong>Drugs that help the immune system fight cancer, particularly effective for advanced melanoma.</li>
+    <li><strong>Targeted therapy:</strong> Medications that target specific genetic mutations in cancer cells, used for certain types of advanced skin cancer.</li>
+</ul>
+
+    </div>
+    <div class="section">
+        <h2 class="section-title">Stages of Care</h2>
+        <h3 class="subsection-title">Prevention:</h3>
+        <p>Emphasize sun protection behaviors, such as wearing sunscreen, protective clothing, seeking shade, and avoiding indoor tanning.</p>
+        <h3 class="subsection-title">Early Detection:</h3>
+        <p>Encourage regular self-examinations of the skin and routine screenings by healthcare professionals to detect any suspicious lesions or changes early.</p>
+        <h3 class="subsection-title">Treatment:</h3>
+        <p>Implement appropriate treatment modalities, such as surgical excision, Mohs surgery, radiation therapy, chemotherapy, immunotherapy, targeted therapy, or photodynamic therapy, depending on the specific characteristics of the cancer.</p>
+        <h3 class="subsection-title">Follow-up Care:</h3>
+        <p>Schedule regular follow-up appointments with healthcare providers for ongoing monitoring, surveillance, and management of any potential recurrence or new skin cancers.</p>
+        <h3 class="subsection-title">Education and Lifestyle Modifications:</h3>
+        <p>Educate patients about skin cancer risk factors, sun safety practices, the importance of regular screenings, and lifestyle modifications to minimize future risks.</p>
+        <h3 class="subsection-title">Long-term Monitoring:</h3>
+        <p>Maintain long-term surveillance and monitoring to detect any signs of recurrence, metastasis, or new skin cancers, ensuring timely intervention and optimal outcomes.</p>
+
+
+    </div>
+    <div class="section">
+        <h2 class="section-title">Clinical Trials</h2>
+        <p>Clinical trials are vital for advancing skin cancer treatments and knowledge. They provide access to innovative therapies and contribute to medical breakthroughs. These trials encompass preventive, screening, treatment, and supportive care studies. Participating in trials can offer patients access to promising treatments not widely available, potentially leading to better outcomes and improved quality of life. Additionally, involvement in clinical trials aids in expanding medical knowledge and refining future treatments for skin cancer. However, individuals considering participation should carefully weigh the potential benefits against the risks. It's crucial to understand the trial's protocols, commit to follow-up appointments, and maintain open communication with healthcare providers. Resources such as the National Cancer Institute (NCI) website and ClinicalTrials.gov help individuals find suitable clinical trials. Before enrolling, thorough research and consultation with healthcare providers are essential to ensure informed decision-making and understanding of the trial's purpose, procedures, risks, and potential benefits.</p>
+    </div>
+    <div class="section">
+<h2 class="section-title">WHO Response:</h2>
+        <p>The World Health Organization (WHO) plays a pivotal role in combating skin cancer through multifaceted initiatives. These encompass raising public awareness about the risks associated with skin cancer and advocating for preventive measures, particularly emphasizing sun safety practices. WHO supports policies and interventions aimed at reducing ultraviolet (UV) radiation exposure, both from natural sunlight and artificial sources like tanning beds. Additionally, WHO facilitates and supports research endeavors focused on enhancing understanding and addressing the challenges of skin cancer prevention, diagnosis, and treatment. Through collaborative efforts with governments, healthcare organizations, and advocacy groups worldwide, WHO endeavors to develop and implement comprehensive strategies for the prevention, early detection, and management of skin cancer, ensuring that individuals everywhere have access to effective interventions and support services.</p>
+    </div>
+</body>
+</html>

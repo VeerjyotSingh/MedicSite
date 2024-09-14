@@ -1,8 +1,12 @@
 import sounddevice as sd
+import Model
+from Model import skin_classes
 import soundfile as sf
 import os
+from PIL import Image
+from werkzeug.utils import secure_filename
 import sqlite3
-from flask import Flask, render_template, request, redirect, url_for, jsonify
+from flask import Flask, render_template, request, redirect, url_for, jsonify,flash
 from newsapi import NewsApiClient
 import requests
 import threading
@@ -26,8 +30,10 @@ cursor.execute('''
     )
 ''')
 conn.commit()
-
+key =os.urandom(24)
 trained_model = keras.models.load_model("create_audio_classification_model.h5")
+app.config['UPLOAD_FOLDER'] = 'uploads'
+app.config['SECRET_KEY'] = key
 @app.route("/")
 def about():
     return render_template('index.html')
@@ -71,10 +77,67 @@ def meddit():
 def locator():
     return render_template('locator.html')
 
-@app.route("/skincancer")
-def skincancer():
-    return render_template('skincancer.html')
 
+# Allowed extensions
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+
+
+# Function to check if the file has an allowed extension
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+@app.route('/skincancer', methods=['GET', 'POST'])
+def skincancer():
+    if request.method == 'POST':
+        # Check if the file part is present in the request
+        if 'file' not in request.files:
+            return 'No file part'
+        file = request.files['file']
+
+        # If no file is selected
+        if file.filename == '':
+            return 'No selected file'
+
+        # If file is allowed, save it
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file.save(filepath)
+            try:
+                result = predict_skin_cancer(filepath)
+            except Exception as e:
+                print(f"Error during recording or prediction: {str(e)}")
+                return render_template('SkinCancer/error.html', message="An error occurred during audio processing.")
+            return render_template("SkinCancer/result.html",prediction=result)
+
+    return render_template('SkinCancer/skincancer.html')
+# Function to predict an image
+def predict_skin_cancer(image_path):
+
+    inputimg = Image.open(image_path).resize((28, 28))
+    img = np.array(inputimg).reshape(-1, 28, 28, 3)
+    result = Model.model.predict(img).tolist()
+    max_prob = max(result[0])
+    class_ind = result[0].index(max_prob)
+
+
+    if (class_ind == 0):
+        info = "Actinic keratosis also known as solar keratosis or senile keratosis are names given to intraepithelial keratinocyte dysplasia. As such they are a pre-malignant lesion or in situ squamous cell carcinomas and thus a malignant lesion."
+    elif (class_ind == 1):
+        info = "Basal cell carcinoma is a type of skin cancer. Basal cell carcinoma begins in the basal cells — a type of cell within the skin that produces new skin cells as old ones die off.Basal cell carcinoma often appears as a slightly transparent bump on the skin, though it can take other forms. Basal cell carcinoma occurs most often on areas of the skin that are exposed to the sun, such as your head and neck"
+    elif (class_ind == 2):
+        info = "Benign lichenoid keratosis (BLK) usually presents as a solitary lesion that occurs predominantly on the trunk and upper extremities in middle-aged women. The pathogenesis of BLK is unclear; however, it has been suggested that BLK may be associated with the inflammatory stage of regressing solar lentigo (SL)1"
+    elif (class_ind == 3):
+        info = "Dermatofibromas are small, noncancerous (benign) skin growths that can develop anywhere on the body but most often appear on the lower legs, upper arms or upper back. These nodules are common in adults but are rare in children. They can be pink, gray, red or brown in color and may change color over the years. They are firm and often feel like a stone under the skin. "
+    elif (class_ind == 4):
+        info = "A melanocytic nevus (also known as nevocytic nevus, nevus-cell nevus and commonly as a mole) is a type of melanocytic tumor that contains nevus cells. Some sources equate the term mole with ‘melanocytic nevus’, but there are also sources that equate the term mole with any nevus form."
+    elif (class_ind == 5):
+        info = "Pyogenic granulomas are skin growths that are small, round, and usually bloody red in color. They tend to bleed because they contain a large number of blood vessels. They’re also known as lobular capillary hemangioma or granuloma telangiectaticum."
+    elif (class_ind == 6):
+        info = "Melanoma, the most serious type of skin cancer, develops in the cells (melanocytes) that produce melanin — the pigment that gives your skin its color. Melanoma can also form in your eyes and, rarely, inside your body, such as in your nose or throat. The exact cause of all melanomas isn't clear, but exposure to ultraviolet (UV) radiation from sunlight or tanning lamps and beds increases your risk of developing melanoma."
+
+    return info
 @app.route("/contact")
 def contact():
     return render_template("contact/contact.html")
@@ -84,7 +147,7 @@ def test():
     return render_template("onlinetest/onlinetest.html")
 
 # Handling lung cancer recording
-app.config['UPLOAD_FOLDER'] = 'uploads'
+
 app.config['USER_INFO_FILE'] = 'user_info.txt'
 
 # Mapping each step to its corresponding recording duration
@@ -100,7 +163,7 @@ RECORDING_DURATIONS = {
     'Normal': 10
 }
 
-@app.route("/lungcancer")
+@app.route("/lunghealth")
 def lungcancer():
     return render_template('lungcancer/lungcancer.html')
 
@@ -231,6 +294,7 @@ def predict_respiratory_disease(trained_model, file):
 
 if __name__ == "__main__":
     # Start Gradio server in a separate thread
+
     gradio_thread = threading.Thread(target=start_gradio)
     gradio_thread.start()
 

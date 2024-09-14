@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rendering Dynamic Images Using Flask</title>
+</head>
+<body>
+<form action="{{ url_for('skincancer_result') }}" enctype="multipart/form-data" method="POST">
+    <input name="img" type="file"/>
+    <input type="submit"/>
+</form>
+</body>
+</html>
