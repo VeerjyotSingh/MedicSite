@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8189e33d-ae48-4650-b6e4-51826e3453e6" name="Changes" comment="Online Test Improve" />
+    <list default="true" id="8189e33d-ae48-4650-b6e4-51826e3453e6" name="Changes" comment="Lung cancer model">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,11 +72,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/templates/breastcancer" />
       <recent name="C:\Users\atlar\PycharmProjects\MedicSite\templates\contact" />
       <recent name="C:\Users\atlar\PycharmProjects\MedicSite\templates\onlinetest" />
       <recent name="$PROJECT_DIR$/templates/lungcancer" />
-      <recent name="$PROJECT_DIR$/templates" />
     </key>
   </component>
   <component name="RunManager">
@@ -134,6 +136,11 @@
       <workItem from="1726066212256" duration="1778000" />
       <workItem from="1726150891622" duration="8000" />
       <workItem from="1726150975412" duration="1742000" />
+      <workItem from="1726294929665" duration="10173000" />
+      <workItem from="1726315247655" duration="196000" />
+      <workItem from="1726315447101" duration="12000" />
+      <workItem from="1726315645736" duration="1600000" />
+      <workItem from="1726317265946" duration="1645000" />
     </task>
     <task id="LOCAL-00001" summary="create Procfile">
       <option name="closed" value="true" />
@@ -239,7 +246,55 @@
       <option name="project" value="LOCAL" />
       <updated>1726152713237</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Chatbot Added">
+      <option name="closed" value="true" />
+      <created>1726306425228</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1726306425228</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Chatbot bug fix">
+      <option name="closed" value="true" />
+      <created>1726306702581</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1726306702581</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Lung cancer model">
+      <option name="closed" value="true" />
+      <created>1726324126436</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1726324126436</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Lung cancer model">
+      <option name="closed" value="true" />
+      <created>1726324191063</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1726324191063</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Lung cancer model">
+      <option name="closed" value="true" />
+      <created>1726324287397</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1726324287397</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Lung cancer model">
+      <option name="closed" value="true" />
+      <created>1726324381944</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1726324381944</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -284,10 +339,13 @@
     <MESSAGE value="back to normal working" />
     <MESSAGE value="Better UI" />
     <MESSAGE value="Online Test Improve" />
-    <option name="LAST_COMMIT_MESSAGE" value="Online Test Improve" />
+    <MESSAGE value="Chatbot Added" />
+    <MESSAGE value="Chatbot bug fix" />
+    <MESSAGE value="Lung cancer model" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lung cancer model" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/MedicSite$main.coverage" NAME="main Coverage Results" MODIFIED="1724575281895" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/MedicSite$MedicSite.coverage" NAME="MedicSite Coverage Results" MODIFIED="1726151516680" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MedicSite$MedicSite.coverage" NAME="MedicSite Coverage Results" MODIFIED="1726324180247" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

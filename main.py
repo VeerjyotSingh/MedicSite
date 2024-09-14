@@ -1,11 +1,15 @@
-import sounddevice
-import soundfile
+import sounddevice as sd
+import soundfile as sf
 import os
 import sqlite3
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 from newsapi import NewsApiClient
 import requests
 import threading
+import librosa
+import numpy as np
+from io import BytesIO
+from tensorflow import keras
 
 app = Flask(__name__)
 
@@ -23,6 +27,7 @@ cursor.execute('''
 ''')
 conn.commit()
 
+trained_model = keras.models.load_model("create_audio_classification_model.h5")
 @app.route("/")
 def about():
     return render_template('index.html')
@@ -99,6 +104,8 @@ RECORDING_DURATIONS = {
 def lungcancer():
     return render_template('lungcancer/lungcancer.html')
 
+
+# Capture user info and redirect to recording page
 @app.route('/record', methods=['POST'])
 def record():
     user_info = {
@@ -111,38 +118,41 @@ def record():
         'email': request.form['email']
     }
 
-    # Save user info to a text file
-    with open(app.config['USER_INFO_FILE'], 'w') as file:
-        for key, value in user_info.items():
-            file.write(f'{key}: {value}\n')
-
+    # You can process user_info here or just pass it to the result page
     return redirect(url_for('record_page'))
 
+
+# Render the recording page
 @app.route('/record_page')
 def record_page():
     return render_template('lungcancer/record3.html', recording_durations=RECORDING_DURATIONS)
 
+
+# Record audio and process it without saving to disk
 @app.route('/record_audio', methods=['POST'])
 def record_audio():
     audio_step = request.form['audio_step']
 
-    # Create the uploads folder if it doesn't exist
-    if not os.path.exists(app.config['UPLOAD_FOLDER']):
-        os.makedirs(app.config['UPLOAD_FOLDER'])
-
-    # Set the file path for the recorded audio
-    file_path = os.path.join(app.config['UPLOAD_FOLDER'], f'{audio_step.replace(" ", "_")}.wav')
-
-    # Record audio using sounddevice
-    duration = RECORDING_DURATIONS.get(audio_step, 5)  # Default to 5 seconds if step not found
+    # Get the corresponding recording duration for the selected step
+    duration = RECORDING_DURATIONS.get(audio_step, 5)  # Default to 5 seconds if not found
     samplerate = 48000
-    recording = sounddevice.rec(int(samplerate * duration), samplerate=samplerate, channels=1, dtype='int16')
-    sounddevice.wait()
 
-    # Save the recorded audio data to a file
-    soundfile.write(file_path, recording, samplerate)
+    try:
+        # Record audio in memory
+        recording = sd.rec(int(samplerate * duration), samplerate=samplerate, channels=1, dtype='int16')
+        sd.wait()
 
-    return 'OK'
+        # Save to in-memory buffer (BytesIO)
+        audio_buffer = BytesIO()
+        sf.write(audio_buffer, recording, samplerate, format='WAV')
+        audio_buffer.seek(0)
+        prediction = predict_respiratory_disease(trained_model, audio_buffer)
+        return render_template('lungcancer/result.html', prediction=prediction)
+
+    except Exception as e:
+        print(f"Error during recording or prediction: {str(e)}")
+        return render_template('lungcancer/error.html', message="An error occurred during audio processing.")
+
 
 @app.route("/reaction")
 def reaction():
@@ -172,6 +182,52 @@ def start_gradio():
 def chat():
     gradio_url = "http://127.0.0.1:7860"
     return render_template('chat.html', gradio_url=gradio_url)
+
+
+def extract_audio_features(audio_signal, sr):
+    try:
+        # Extract audio features using librosa (e.g., chroma_stft, rmse, spectral_centroid)
+        chroma_stft = librosa.feature.chroma_stft(y=audio_signal, sr=sr)
+        rmse = librosa.feature.rms(y=audio_signal)
+        spectral_centroid = librosa.feature.spectral_centroid(y=audio_signal, sr=sr)
+        spectral_bandwidth = librosa.feature.spectral_bandwidth(y=audio_signal, sr=sr)
+
+        # Combine features into a single feature array
+        features = np.hstack([chroma_stft.mean(axis=1), rmse.mean(), spectral_centroid.mean(), spectral_bandwidth.mean()])
+        return features
+
+    except Exception as e:
+        print(f"Error extracting features from audio signal: {str(e)}")
+
+
+def predict_respiratory_disease(trained_model, file):
+    try:
+        # Load audio from the in-memory file
+        data, samplerate = sf.read(file)
+
+        # Extract features from the audio signal
+        audio_features = extract_audio_features(data, samplerate)
+
+        if audio_features is not None:
+            # Reshape the features to match the model's expected input shape
+            audio_features_reshaped = audio_features.reshape(1, -1)
+
+            # Use the trained model to make a prediction
+            prediction = trained_model.predict(audio_features_reshaped)
+
+            # Return the prediction for rendering on the result page
+            return {
+                'no_disease_prob': prediction[0][0] * 100,
+                'disease_prob': prediction[0][1] * 100
+            }
+
+    except Exception as e:
+        print(f"Error during prediction: {str(e)}")
+        return {
+            error:"Error Occured"
+        }
+
+
 
 if __name__ == "__main__":
     # Start Gradio server in a separate thread

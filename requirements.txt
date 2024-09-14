@@ -6,3 +6,7 @@ gunicorn
 firebase-admin
 gradio
 google-generativeai
+keras
+librosa
+numpy
+tensorflow
