@@ -2,8 +2,10 @@ import sounddevice
 import soundfile
 import os
 import sqlite3
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 from newsapi import NewsApiClient
+import requests
+import threading
 
 app = Flask(__name__)
 
@@ -162,5 +164,19 @@ def skn_info():
 def disease_info_page():
     return render_template("lungcancer/lungcancer_info.html")
 
+
+def start_gradio():
+    os.system('python chatbot.py')
+
+@app.route('/chat')
+def chat():
+    gradio_url = "http://127.0.0.1:7860"
+    return render_template('chat.html', gradio_url=gradio_url)
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    # Start Gradio server in a separate thread
+    gradio_thread = threading.Thread(target=start_gradio)
+    gradio_thread.start()
+
+    # Start Flask server
+    app.run(debug=True, use_reloader=False)

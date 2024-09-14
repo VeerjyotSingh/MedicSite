@@ -1,0 +1,21 @@
+/* static/custom.css */
+
+:root {
+    --primary-bg-color: #000000;  /* Black background */
+    --primary-text-color: #FFFFFF;  /* White text */
+}
+
+body {
+    background-color: var(--primary-bg-color);
+    color: var(--primary-text-color);
+}
+
+input, textarea {
+    background-color: var(--primary-bg-color);
+    color: var(--primary-text-color);
+}
+
+.chatbox {
+    background-color: var(--primary-bg-color);
+    color: var(--primary-text-color);
+}

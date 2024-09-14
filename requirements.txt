@@ -4,3 +4,5 @@ Flask
 newsapi-python
 gunicorn
 firebase-admin
+gradio
+google-generativeai

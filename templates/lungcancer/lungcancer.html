@@ -91,6 +91,8 @@
                 <li class="nav-item"><a href="{{ url_for('test') }}" class="nav-link">Online Test</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ url_for('skincancer') }}">Skin Cancer</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ url_for('lungcancer') }}">Lung Cancer</a></li>
+
+     <li class="nav-item"><a href="{{ url_for('Chat') }}" class="nav-link">Chatbot</a></li>
             </ul>
         </div>
     </div>
@@ -117,13 +119,24 @@
     padding: 10px;
     margin-bottom: 20px;
     box-sizing: border-box;
-    background-color: #333; /* Dark background consistent with other inputs
-    appearance: none; /* Remove default browser styling */
+    background-color: #333;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 5px;
+    appearance: none;
+    -webkit-appearance: none; /* For Safari */
+    -moz-appearance: none; /* For Firefox */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 4 5\'><path fill=\'%23fff\' d=\'M2 0L0 2h4z\'/></svg>'); /* Custom dropdown arrow */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px;
 ">
-    <option value="" disabled selected>Select...</option>
-    <option value="Yes">Yes</option>
-    <option value="No">No</option>
+    <option value="" disabled selected>Select an option</option>
+    <option value="non-smoker">Non-smoker</option>
+    <option value="occasional-smoker">Occasional smoker</option>
+    <option value="regular-smoker">Regular smoker</option>
 </select>
+
 
                <br>
 

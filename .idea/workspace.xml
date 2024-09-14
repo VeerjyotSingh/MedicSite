@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8189e33d-ae48-4650-b6e4-51826e3453e6" name="Changes" comment="Better UI">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact.db" beforeDir="false" afterPath="$PROJECT_DIR$/contact.db" afterDir="false" />
-    </list>
+    <list default="true" id="8189e33d-ae48-4650-b6e4-51826e3453e6" name="Changes" comment="Online Test Improve" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -136,6 +133,7 @@
       <workItem from="1726066051556" duration="11000" />
       <workItem from="1726066212256" duration="1778000" />
       <workItem from="1726150891622" duration="8000" />
+      <workItem from="1726150975412" duration="1742000" />
     </task>
     <task id="LOCAL-00001" summary="create Procfile">
       <option name="closed" value="true" />
@@ -233,7 +231,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725895138032</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Online Test Improve">
+      <option name="closed" value="true" />
+      <created>1726152713237</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1726152713237</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -277,10 +283,11 @@
     <MESSAGE value="meddit working" />
     <MESSAGE value="back to normal working" />
     <MESSAGE value="Better UI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Better UI" />
+    <MESSAGE value="Online Test Improve" />
+    <option name="LAST_COMMIT_MESSAGE" value="Online Test Improve" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/MedicSite$main.coverage" NAME="main Coverage Results" MODIFIED="1724575281895" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/MedicSite$MedicSite.coverage" NAME="MedicSite Coverage Results" MODIFIED="1726065039468" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MedicSite$MedicSite.coverage" NAME="MedicSite Coverage Results" MODIFIED="1726151516680" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
