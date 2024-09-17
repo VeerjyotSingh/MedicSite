@@ -90,7 +90,7 @@
                 <li class="nav-item"><a href="{{ url_for('contact') }}" class="nav-link">Contact</a></li>
                 <li class="nav-item"><a href="{{ url_for('test') }}" class="nav-link">Online Test</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ url_for('skincancer') }}">Skin Cancer</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ url_for('lungcancer') }}">Lung Health</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('lunghealth') }}">Lung Health</a></li>
 
      <li class="nav-item"><a href="{{ url_for('chat') }}" class="nav-link">Chatbot</a></li>
             </ul>
@@ -148,10 +148,6 @@
 
                <label for="email" class="form-label">Email:</label>
                <input type="email" id="email" name="email"  required>
-
-               <div class="input-group mb-3" style="padding-top:20px">
-                   <input type="file" id="inputGroupFile02">
-               </div>
 
                <button type="button" onclick="window.location.href='{{ url_for('disease_info_page') }}';" class="btn btn-outline-info">
                    OpenAI Disease Info

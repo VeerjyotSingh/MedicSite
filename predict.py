@@ -3,12 +3,12 @@ import numpy as np
 import glob
 import os
 import librosa
-import keras
+import tensorflow as tf
 
 print('Loading Model....')
-# Load the trained Keras model - create_audio_classification_model.h5
+# Load the trained tf.keras model - create_audio_classification_model.h5
 model_filename = 'create_audio_classification_model.h5'
-trained_model = keras.models.load_model(model_filename)
+trained_model = tf.keras.models.load_model(model_filename)
 print('Model Loaded....')
 
 

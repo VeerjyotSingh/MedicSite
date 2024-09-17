@@ -2,7 +2,6 @@ import sounddevice as sd
 import Model
 from Model import skin_classes
 import soundfile as sf
-import os
 from PIL import Image
 from werkzeug.utils import secure_filename
 import sqlite3
@@ -13,9 +12,15 @@ import threading
 import librosa
 import numpy as np
 from io import BytesIO
-from tensorflow import keras
+import tensorflow as tf
+import os
+
 
 app = Flask(__name__)
+
+api_key = os.getenv('NewsAPI')
+print(os.environ)
+print(f"API Key: {api_key}")
 
 # Connect to SQLite database
 conn = sqlite3.connect("contact.db", check_same_thread=False)
@@ -31,32 +36,46 @@ cursor.execute('''
 ''')
 conn.commit()
 key =os.urandom(24)
-trained_model = keras.models.load_model("create_audio_classification_model.h5")
+trained_model = tf.keras.models.load_model("create_audio_classification_model.h5")
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['SECRET_KEY'] = key
 @app.route("/")
 def about():
+    print(f"API Key in Flask: {os.getenv('NewsAPI')}")
     return render_template('index.html')
 
 @app.route("/news")
 def news():
+    api_key = os.getenv("NewsAPI")
+    if not api_key:
+        raise ValueError("API_KEY environment variable not set or empty.")
+
     try:
-        newsapi = NewsApiClient(api_key="a7c40948db6d454aa8ee3f7d5754234b")
+        # Initialize NewsApiClient with API key
+        newsapi = NewsApiClient(api_key=api_key)
+
+        # Fetch top headlines
         top_headlines = newsapi.get_top_headlines(
             category='health',
             language='en',
-            country='in')
+            country='in'
+        )
 
-        # Extract articles
+        # Extract articles from the response
         articles = top_headlines.get('articles', [])
         length = len(articles)
-        # Render the template with articles
-        return render_template('news.html', articles=articles, len=length)
+
+        # Debugging: print articles to the console
+        print("Fetched articles:", articles)
+
+        # Render the template with articles and their length
+        return render_template('news.html', articles=articles, length=length)
 
     except Exception as e:
+        # Debugging: print the error to the console
         print(f"An error occurred: {e}")
-        return render_template('news.html')
-
+        # Render the template with an empty list in case of error
+        return render_template('news.html', articles=[], length=0)
 @app.route("/meddit", methods=['GET', 'POST'])
 def meddit():
     if request.method == 'POST':
@@ -120,8 +139,6 @@ def predict_skin_cancer(image_path):
     result = Model.model.predict(img).tolist()
     max_prob = max(result[0])
     class_ind = result[0].index(max_prob)
-
-
     if (class_ind == 0):
         info = "Actinic keratosis also known as solar keratosis or senile keratosis are names given to intraepithelial keratinocyte dysplasia. As such they are a pre-malignant lesion or in situ squamous cell carcinomas and thus a malignant lesion."
     elif (class_ind == 1):
@@ -164,8 +181,8 @@ RECORDING_DURATIONS = {
 }
 
 @app.route("/lunghealth")
-def lungcancer():
-    return render_template('lungcancer/lungcancer.html')
+def lunghealth():
+    return render_template('lunghealth/lunghealth.html')
 
 
 # Capture user info and redirect to recording page
@@ -188,7 +205,7 @@ def record():
 # Render the recording page
 @app.route('/record_page')
 def record_page():
-    return render_template('lungcancer/record3.html', recording_durations=RECORDING_DURATIONS)
+    return render_template('lunghealth/record3.html', recording_durations=RECORDING_DURATIONS)
 
 
 # Record audio and process it without saving to disk
@@ -210,12 +227,16 @@ def record_audio():
         sf.write(audio_buffer, recording, samplerate, format='WAV')
         audio_buffer.seek(0)
         prediction = predict_respiratory_disease(trained_model, audio_buffer)
-        return render_template('lungcancer/result.html', prediction=prediction)
+        return render_template('lunghealth/result.html', prediction=prediction)
 
     except Exception as e:
         print(f"Error during recording or prediction: {str(e)}")
-        return render_template('lungcancer/error.html', message="An error occurred during audio processing.")
+        return render_template('lunghealth/error.html', message="An error occurred during audio processing.")
 
+
+@app.route("/disease_info_page")
+def disease_info_page():
+    return render_template("lunghealth/lunghealth_info.html")
 
 @app.route("/reaction")
 def reaction():
@@ -231,12 +252,7 @@ def verbal():
 
 @app.route("/skn_info")
 def skn_info():
-    return render_template("skn_info.html")
-
-@app.route("/disease_info_page")
-def disease_info_page():
-    return render_template("lungcancer/lungcancer_info.html")
-
+    return render_template("templates/SkinCancer/skn_info.html")
 
 def start_gradio():
     os.system('python chatbot.py')
@@ -287,16 +303,12 @@ def predict_respiratory_disease(trained_model, file):
     except Exception as e:
         print(f"Error during prediction: {str(e)}")
         return {
-            error:"Error Occured"
+            "error":"Error Occured"
         }
 
 
 
 if __name__ == "__main__":
-    # Start Gradio server in a separate thread
-
     gradio_thread = threading.Thread(target=start_gradio)
     gradio_thread.start()
-
-    # Start Flask server
     app.run(debug=True, use_reloader=False)

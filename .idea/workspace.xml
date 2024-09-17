@@ -5,27 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8189e33d-ae48-4650-b6e4-51826e3453e6" name="Changes" comment="Lung cancer model">
-      <change afterPath="$PROJECT_DIR$/Model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/best_model1.h5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/SkinCancer/error.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/SkinCancer/img.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/SkinCancer/result.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/MelanoCytic.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/MedicSite.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MedicSite.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_05_24__19_37__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_05_24__19_37__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot.py" beforeDir="false" afterPath="$PROJECT_DIR$/chatbot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contact.db" beforeDir="false" afterPath="$PROJECT_DIR$/contact.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/predict.py" beforeDir="false" afterPath="$PROJECT_DIR$/predict.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/SkinCancer/result.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/SkinCancer/result.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/SkinCancer/skincancer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/SkinCancer/skincancer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/SkinCancer/skn_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/SkinCancer/skn_info.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/chat.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/chat.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/contact/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contact/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/contact/submitted.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contact/submitted.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/locator.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/locator.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/lungcancer/lungcancer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lungcancer/lungcancer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/lungcancer/record3.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lungcancer/record3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/lungcancer/result.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lungcancer/result.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/lungcancer/error.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lunghealth/error.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/lungcancer/lungcancer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lunghealth/lunghealth.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/lungcancer/lungcancer_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lunghealth/lunghealth_info.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/lungcancer/record3.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lunghealth/record3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/lungcancer/result.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lunghealth/result.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/meddit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/meddit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/news.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/news.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/skincancer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/SkinCancer/skincancer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/skn_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/SkinCancer/skn_info.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/onlinetest/numsequence.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/onlinetest/numsequence.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/onlinetest/onlinetest.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/onlinetest/onlinetest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/onlinetest/reaction.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/onlinetest/reaction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/onlinetest/verbal.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/onlinetest/verbal.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,9 +43,20 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
+    </option>
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
     </option>
   </component>
   <component name="Git.Settings">
@@ -80,26 +99,23 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/dhruv/Desktop/MedicSite/templates/SkinCancer",
+    "last_opened_file_path": "/Users/veerjyotsammi/PycharmProjects/MedicSite",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\dhruv\Desktop\MedicSite\templates\SkinCancer" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\dhruv\Desktop\MedicSite\templates\SkinCancer" />
-      <recent name="C:\Users\dhruv\Desktop\MedicSite" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/templates/breastcancer" />
       <recent name="C:\Users\atlar\PycharmProjects\MedicSite\templates\contact" />
+      <recent name="C:\Users\atlar\PycharmProjects\MedicSite\templates\onlinetest" />
+      <recent name="$PROJECT_DIR$/templates/lungcancer" />
     </key>
   </component>
   <component name="RunManager">
@@ -109,9 +125,12 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
+        <env name="Gemini" value="AIzaSyCrwpHbDi-msKra0YBHT4KNBsgS45ZwT9Q" />
+        <env name="NewsAPI" value="a7c40948db6d454aa8ee3f7d5754234b" />
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="MedicSite" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -135,7 +154,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-babbdf50b680-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.15989.155" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-PY-241.18034.82" />
+        <option value="bundled-python-sdk-975db3bf15a3-2767605e8bc2-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.18034.82" />
       </set>
     </attachedChunks>
   </component>
@@ -163,6 +183,7 @@
       <workItem from="1726315447101" duration="12000" />
       <workItem from="1726315645736" duration="1600000" />
       <workItem from="1726317265946" duration="1645000" />
+      <workItem from="1726587540252" duration="7864000" />
     </task>
     <task id="LOCAL-00001" summary="create Procfile">
       <option name="closed" value="true" />
@@ -367,7 +388,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="Lung cancer model" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/MedicSite$main.coverage" NAME="main Coverage Results" MODIFIED="1724575281895" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/MedicSite$MedicSite.coverage" NAME="MedicSite Coverage Results" MODIFIED="1726324180247" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MedicSite$main.coverage" NAME="main Coverage Results" MODIFIED="1726388222479" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MedicSite$MedicSite.coverage" NAME="MedicSite Coverage Results" MODIFIED="1726595620124" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

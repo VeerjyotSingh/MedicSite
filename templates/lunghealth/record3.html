@@ -2,14 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Locator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Record Audio</title>
     <link rel="stylesheet" href="static/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body class="bg-black text-white">
-<nav class="navbar navbar-expand-lg bg-black border-bottom" data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg bg-black border-bottom " data-bs-theme="dark">
   <div class="container-fluid">
        <a class="navbar-brand" href="{{ url_for('about') }}">MedicSite</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,11 +29,27 @@
             <li class="nav-item"><a class="nav-link" href="{{ url_for('lunghealth') }}">Lung Health</a></li>
 
      <li class="nav-item"><a href="{{ url_for('chat') }}" class="nav-link">Chatbot</a></li>
-
     </ul>
    </div>
       </div>
 </nav>
-   <section></section>
-  </body>
+        <h1 style="padding-top:30px;padding-bottom:30px;"><center>Record Audio</center></h1>
+<center>
+        <form action="/record_audio" method="post" class="row g-3">
+            {% for step, duration in recording_durations.items() %}
+                 <div class="col-md-3">
+                <div class="form-group">
+                    <label>{{ step }}:</label>
+                     </div>
+                     </div>
+                      <div class="col-md-2">
+                    <button type="submit" class="btn btn-primary form-control" name="audio_step" value="{{ step }}">{{ duration }} seconds</button>
+                </div>
+            </div>
+            {% endfor %}
+        </form>
+    </center>
+    </div>
+    </div>
+</body>
 </html>
