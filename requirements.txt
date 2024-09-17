@@ -11,3 +11,4 @@ librosa
 numpy
 tensorflow
 pillow
+flask_sqlalchemy

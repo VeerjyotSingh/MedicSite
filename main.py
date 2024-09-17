@@ -5,40 +5,46 @@ import soundfile as sf
 from PIL import Image
 from werkzeug.utils import secure_filename
 import sqlite3
-from flask import Flask, render_template, request, redirect, url_for, jsonify,flash
+from flask import Flask, render_template, request, redirect, url_for, jsonify, flash ,g
 from newsapi import NewsApiClient
-import requests
+from datetime import datetime
 import threading
 import librosa
 import numpy as np
 from io import BytesIO
 import tensorflow as tf
 import os
-
-
+from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///MedicSite.db'
+db = SQLAlchemy(app)
+class Meddit(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    author = db.Column(db.String(255), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+
+class LungHealth(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    age = db.Column(db.Integer)
+    gender = db.Column(db.String(10))
+    symptoms = db.Column(db.String(500))
+    date = db.Column(db.DateTime, default=datetime.utcnow)
+    place = db.Column(db.String(100))  # New field
+    smoking = db.Column(db.String(50))  # New field
+    previous_disease = db.Column(db.String(500))  # New field
+    phone = db.Column(db.String(20))  # New field
+    email = db.Column(db.String(100))  # New field
+
+with app.app_context():
+    db.create_all()
+
+key =os.urandom(24)
+trained_model = tf.keras.models.load_model("create_audio_classification_model.h5")
 
 api_key = os.getenv('NewsAPI')
 print(os.environ)
 print(f"API Key: {api_key}")
-
-# Connect to SQLite database
-conn = sqlite3.connect("contact.db", check_same_thread=False)
-cursor = conn.cursor()
-
-# Create a table if it doesn't exist
-cursor.execute('''
-    CREATE TABLE IF NOT EXISTS Meddit (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        author TEXT NOT NULL,
-        content TEXT NOT NULL
-    )
-''')
-conn.commit()
-key =os.urandom(24)
-trained_model = tf.keras.models.load_model("create_audio_classification_model.h5")
-app.config['UPLOAD_FOLDER'] = 'uploads'
-app.config['SECRET_KEY'] = key
 @app.route("/")
 def about():
     print(f"API Key in Flask: {os.getenv('NewsAPI')}")
@@ -81,28 +87,21 @@ def meddit():
     if request.method == 'POST':
         author = request.form['author']
         content = request.form['content']
-        # Insert data into database
-        cursor.execute('INSERT INTO Meddit (author, content) VALUES (?, ?)', (author, content))
-        conn.commit()
+        new_post = Meddit(author=author, content=content)
+        db.session.add(new_post)
+        db.session.commit()
         return redirect(url_for('meddit'))
 
-    # Retrieve data from database
-    cursor.execute('SELECT * FROM Meddit')
-    posts = cursor.fetchall()
-
+    posts = Meddit.query.all()
     return render_template('meddit.html', posts=posts)
+
 
 @app.route("/locator")
 def locator():
     return render_template('locator.html')
 
-
-# Allowed extensions
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
-
-
-# Function to check if the file has an allowed extension
 def allowed_file(filename):
+    ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
@@ -180,26 +179,56 @@ RECORDING_DURATIONS = {
     'Normal': 10
 }
 
-@app.route("/lunghealth")
+
+@app.route("/lunghealth", methods=["GET", "POST"])
 def lunghealth():
     return render_template('lunghealth/lunghealth.html')
 
 
 # Capture user info and redirect to recording page
-@app.route('/record', methods=['POST'])
+@app.route("/record", methods=['POST'])
 def record():
-    user_info = {
-        'name': request.form['name'],
-        'age': request.form['age'],
-        'place': request.form['place'],
-        'smoking': request.form['smoking'],
-        'previous_disease': request.form['previous_disease'],
-        'phone': request.form['phone'],
-        'email': request.form['email']
-    }
+    if request.method == "POST":
+        try:
+            # Retrieve form data using .get() to avoid KeyError
+            name = request.form.get('name')
+            age = request.form.get('age')
+            place = request.form.get('place')
+            gender = request.form.get('gender')
+            symptoms = request.form.get('symptoms')
+            smoking = request.form.get('smoking')
+            previous_disease = request.form.get('previous_disease')
+            phone = request.form.get('phone')
+            email = request.form.get('email')
 
-    # You can process user_info here or just pass it to the result page
-    return redirect(url_for('record_page'))
+            # Optional: Log the received data for debugging
+            print(f"Form data received: name={name}, age={age}, place={place}, gender={gender}, symptoms={symptoms}, smoking={smoking}, previous_disease={previous_disease}, phone={phone}, email={email}")
+
+            # Create a new LungHealth record
+            new_record = LungHealth(
+                name=name,
+                age=age,
+                gender=gender,
+                symptoms=symptoms,
+                place=place,
+                smoking=smoking,
+                previous_disease=previous_disease,
+                phone=phone,
+                email=email
+            )
+
+            # Add the new record to the database
+            db.session.add(new_record)
+            db.session.commit()
+
+            # Redirect to the record page
+            return redirect(url_for('record_page'))
+
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            db.session.rollback()
+            return render_template('lunghealth/error.html', message="An error occurred during form submission.")
+
 
 
 # Render the recording page
