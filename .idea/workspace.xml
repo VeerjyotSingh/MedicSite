@@ -4,14 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8189e33d-ae48-4650-b6e4-51826e3453e6" name="Changes" comment="removed hard coded api keys">
-      <change afterPath="$PROJECT_DIR$/Database.py" afterDir="false" />
+    <list default="true" id="8189e33d-ae48-4650-b6e4-51826e3453e6" name="Changes" comment="database for lungcancer and meddit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/MedicSite.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database.py" beforeDir="false" afterPath="$PROJECT_DIR$/Database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/instance/MedicSite.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/MedicSite.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/SkinCancer/skn_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/SkinCancer/skn_info.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/chat.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/chat.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/contact/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contact/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/contact/submitted.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contact/submitted.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/lunghealth/lunghealth.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lunghealth/lunghealth.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/meddit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/meddit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/lunghealth/lunghealth_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lunghealth/lunghealth_info.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/lunghealth/result.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lunghealth/result.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/onlinetest/numsequence.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/onlinetest/numsequence.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/onlinetest/onlinetest.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/onlinetest/onlinetest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/onlinetest/reaction.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/onlinetest/reaction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/onlinetest/verbal.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/onlinetest/verbal.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,28 +74,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Python.Database.executor": "Run",
-    "Python.MedicSite.executor": "Run",
-    "Python.chatbot.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.predict.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/Users/veerjyotsammi/PycharmProjects/MedicSite",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Python.Database.executor&quot;: &quot;Run&quot;,
+    &quot;Python.MedicSite.executor&quot;: &quot;Run&quot;,
+    &quot;Python.chatbot.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.predict.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/veerjyotsammi/PycharmProjects/MedicSite&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -97,16 +105,39 @@
       <recent name="$PROJECT_DIR$/templates/lungcancer" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.Database">
+    <configuration name="Database" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="MedicSite" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Database.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="MedicSite" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="MedicSite" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
         <env name="Gemini" value="AIzaSyCrwpHbDi-msKra0YBHT4KNBsgS45ZwT9Q" />
         <env name="NewsAPI" value="a7c40948db6d454aa8ee3f7d5754234b" />
-        <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
       <option name="SDK_NAME" value="MedicSite" />
@@ -126,6 +157,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Database" />
         <item itemvalue="Python.MedicSite" />
       </list>
     </recent_temporary>
@@ -162,7 +194,8 @@
       <workItem from="1726315447101" duration="12000" />
       <workItem from="1726315645736" duration="1600000" />
       <workItem from="1726317265946" duration="1645000" />
-      <workItem from="1726587540252" duration="13006000" />
+      <workItem from="1726587540252" duration="13274000" />
+      <workItem from="1726647757023" duration="1626000" />
     </task>
     <task id="LOCAL-00001" summary="create Procfile">
       <option name="closed" value="true" />
@@ -324,7 +357,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726595781090</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="database for lungcancer and meddit">
+      <option name="closed" value="true" />
+      <created>1726603107184</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1726603107184</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -373,11 +414,12 @@
     <MESSAGE value="Chatbot bug fix" />
     <MESSAGE value="Lung cancer model" />
     <MESSAGE value="removed hard coded api keys" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed hard coded api keys" />
+    <MESSAGE value="database for lungcancer and meddit" />
+    <option name="LAST_COMMIT_MESSAGE" value="database for lungcancer and meddit" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/MedicSite$main.coverage" NAME="main Coverage Results" MODIFIED="1726602730085" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/MedicSite$MedicSite.coverage" NAME="MedicSite Coverage Results" MODIFIED="1726601253612" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/MedicSite$Database.coverage" NAME="Database Coverage Results" MODIFIED="1726601476271" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MedicSite$main.coverage" NAME="main Coverage Results" MODIFIED="1726602984869" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MedicSite$MedicSite.coverage" NAME="MedicSite Coverage Results" MODIFIED="1726649188303" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MedicSite$Database.coverage" NAME="Database Coverage Results" MODIFIED="1726648974093" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

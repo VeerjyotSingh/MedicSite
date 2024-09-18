@@ -1,6 +1,5 @@
 import sounddevice as sd
 import Model
-from Model import skin_classes
 import soundfile as sf
 from PIL import Image
 from werkzeug.utils import secure_filename
@@ -30,19 +29,29 @@ class LungHealth(db.Model):
     gender = db.Column(db.String(10))
     symptoms = db.Column(db.String(500))
     date = db.Column(db.DateTime, default=datetime.utcnow)
-    place = db.Column(db.String(100))  # New field
-    smoking = db.Column(db.String(50))  # New field
-    previous_disease = db.Column(db.String(500))  # New field
-    phone = db.Column(db.String(20))  # New field
-    email = db.Column(db.String(100))  # New field
+    place = db.Column(db.String(100))
+    smoking = db.Column(db.String(50))
+    previous_disease = db.Column(db.String(500))
+    phone = db.Column(db.String(20))
+    email = db.Column(db.String(100))
+
+class SkinCancer(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    age = db.Column(db.Integer)
+    place = db.Column(db.String(100))
+    previous_disease = db.Column(db.String(500))
+    phone = db.Column(db.String(20))
+    email = db.Column(db.String(100))
+    date = db.Column(db.DateTime, default=datetime.utcnow)
 
 with app.app_context():
     db.create_all()
 
 key =os.urandom(24)
 trained_model = tf.keras.models.load_model("create_audio_classification_model.h5")
-
 api_key = os.getenv('NewsAPI')
+app.config['UPLOAD_FOLDER'] = 'uploads'
 print(os.environ)
 print(f"API Key: {api_key}")
 @app.route("/")
@@ -108,36 +117,89 @@ def allowed_file(filename):
 @app.route('/skincancer', methods=['GET', 'POST'])
 def skincancer():
     if request.method == 'POST':
-        # Check if the file part is present in the request
-        if 'file' not in request.files:
-            return 'No file part'
-        file = request.files['file']
+        try:
+            # Get form data
+            name = request.form.get('name')
+            age = request.form.get('age')
+            place = request.form.get('place')
+            previous_disease = request.form.get('previous_disease')
+            phone = request.form.get('phone')
+            email = request.form.get('email')
 
-        # If no file is selected
-        if file.filename == '':
-            return 'No selected file'
+            # Create new SkinCancer record
+            new_record = SkinCancer(
+                name=name,
+                age=age,
+                place=place,
+                previous_disease=previous_disease,
+                phone=phone,
+                email=email
+            )
+            db.session.add(new_record)
+            db.session.commit()
 
-        # If file is allowed, save it
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            file.save(filepath)
-            try:
-                result = predict_skin_cancer(filepath)
-            except Exception as e:
-                print(f"Error during recording or prediction: {str(e)}")
-                return render_template('SkinCancer/error.html', message="An error occurred during audio processing.")
-            return render_template("SkinCancer/result.html",prediction=result)
+            # Handle file upload
+            if 'file' not in request.files:
+                return 'No file part'
+            file = request.files['file']
 
+            # If no file is selected
+            if file.filename == '':
+                return 'No selected file'
+
+            # If file is allowed, save it
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+                file.save(filepath)
+                try:
+                    result = predict_skin_cancer(filepath)
+                except Exception as e:
+                    print(f"Error during prediction: {str(e)}")
+                    return render_template('SkinCancer/error.html', message="An error occurred during file processing.")
+
+                return render_template("SkinCancer/result.html", prediction=result)
+
+        except Exception as e:
+            print(f"Error while saving form data: {str(e)}")
+            return render_template('SkinCancer/error.html', message="An error occurred during form submission.")
+
+    # Render the form page for GET request
     return render_template('SkinCancer/skincancer.html')
-# Function to predict an image
-def predict_skin_cancer(image_path):
 
-    inputimg = Image.open(image_path).resize((28, 28))
-    img = np.array(inputimg).reshape(-1, 28, 28, 3)
-    result = Model.model.predict(img).tolist()
-    max_prob = max(result[0])
-    class_ind = result[0].index(max_prob)
+
+def preprocess_image(image_path):
+    # Open and resize the image to (28, 28)
+    img = Image.open(image_path).resize((28, 28))
+
+    # Convert the image to RGB if it is grayscale
+    img = img.convert('RGB')
+
+    # Convert the image to a numpy array
+    img_array = np.array(img)
+
+    # Normalize the image data to [0, 1] range (if required by your model)
+    img_array = img_array / 255.0
+
+    # Reshape the image to (-1, 28, 28, 3) for batch prediction
+    img_array = img_array.reshape(1, 28, 28, 3)  # Add batch dimension
+
+    return img_array
+
+
+def predict_skin_cancer(image_path):
+    try:
+        # Preprocess the image
+        img = preprocess_image(image_path)
+
+        # Ensure the model is loaded (assuming Model.model is already loaded)
+        result = Model.model.predict(img).tolist()
+        max_prob = max(result[0])
+        class_ind = result[0].index(max_prob)
+    except Exception as e:
+        print(f"Error during prediction: {str(e)}")
+        return "Error during prediction."
+
     if (class_ind == 0):
         info = "Actinic keratosis also known as solar keratosis or senile keratosis are names given to intraepithelial keratinocyte dysplasia. As such they are a pre-malignant lesion or in situ squamous cell carcinomas and thus a malignant lesion."
     elif (class_ind == 1):
@@ -161,12 +223,7 @@ def contact():
 @app.route("/test")
 def test():
     return render_template("onlinetest/onlinetest.html")
-
-# Handling lung cancer recording
-
 app.config['USER_INFO_FILE'] = 'user_info.txt'
-
-# Mapping each step to its corresponding recording duration
 RECORDING_DURATIONS = {
     'Breathing Deep': 11,
     'Breathing Shallow': 8,

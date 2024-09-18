@@ -32,6 +32,17 @@ class LungHealth(db.Model):
     email = db.Column(db.String(100))
     date = db.Column(db.DateTime, default=datetime.utcnow)
 
+# Define the SkinCancer model
+class SkinCancer(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    age = db.Column(db.Integer)
+    place = db.Column(db.String(100))
+    previous_disease = db.Column(db.String(500))
+    phone = db.Column(db.String(20))
+    email = db.Column(db.String(100))
+    date = db.Column(db.DateTime, default=datetime.utcnow)
+
 def create_and_migrate_db():
     with app.app_context():
         # Create all tables (if they do not already exist)
@@ -58,6 +69,16 @@ def view_data():
                     f"ID: {record.id}, Name: {record.name}, Age: {record.age}, Gender: {record.gender}, Symptoms: {record.symptoms}, Place: {record.place}, Smoking: {record.smoking}, Previous Disease: {record.previous_disease}, Phone: {record.phone}, Email: {record.email}, Date: {record.date}")
         else:
             print("No data found in 'LungHealth' table.")
+
+        # Query all data from the SkinCancer table
+        skin_cancer_records = SkinCancer.query.all()
+        print("\nData from table 'SkinCancer':")
+        if skin_cancer_records:
+            for record in skin_cancer_records:
+                print(
+                    f"ID: {record.id}, Name: {record.name}, Age: {record.age}, Place: {record.place}, Previous Disease: {record.previous_disease}, Phone: {record.phone}, Email: {record.email}, Date: {record.date}")
+        else:
+            print("No data found in 'SkinCancer' table.")
 
 if __name__ == "__main__":
     create_and_migrate_db()
