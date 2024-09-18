@@ -12,18 +12,6 @@
             color: #f0f0f0; /* Light text color for better contrast */
         }
 
-        .navbar {
-            background-color: #121212; /* Darker navbar for better contrast */
-        }
-
-        .navbar-brand, .nav-link {
-            color: #f0f0f0 !important; /* Light text color for navbar links */
-        }
-
-        .navbar-toggler-icon {
-            filter: invert(1); /* Invert icon color for dark background */
-        }
-
         .list-group-item {
             background-color: #1c1c1c; /* Dark background for posts */
             color: #f0f0f0; /* Light text for posts */
@@ -66,26 +54,28 @@
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg border-bottom" data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg bg-black border-bottom" data-bs-theme="dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{{ url_for('about') }}">MedicSite</a>
+       <a class="navbar-brand" href="{{ url_for('about') }}">MedicSite</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item"><a href="{{ url_for('news') }}" class="nav-link">News</a></li>
-        <li class="nav-item"><a href="{{ url_for('meddit') }}" class="nav-link">Meddit</a></li>
-        <li class="nav-item"><a href="{{ url_for('locator') }}" class="nav-link">Locator</a></li>
-        <li class="nav-item"><a href="{{ url_for('contact') }}" class="nav-link">Contact</a></li>
+    <ul class="navbar-nav">
+     <li class="nav-item"><a href="{{ url_for('news') }}" class="nav-link">News</a></li>
+     <li class="nav-item"><a href="{{ url_for('meddit') }}" class="nav-link">Meddit</a></li>
+     <li class="nav-item"><a href="{{ url_for('locator') }}" class="nav-link">Locator</a></li>
+     <li class="nav-item"><a href="{{ url_for('contact') }}" class="nav-link">Contact</a></li>
         <li class="nav-item"><a href="{{ url_for('test') }}" class="nav-link">Online Test</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ url_for('skincancer') }}">Skin Cancer</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ url_for('lunghealth') }}">Lung Health</a></li>
+
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('skincancer') }}">Skin Cancer</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('lunghealth') }}">Lung Health</a></li>
 
      <li class="nav-item"><a href="{{ url_for('chat') }}" class="nav-link">Chatbot</a></li>
-      </ul>
-    </div>
-  </div>
+
+    </ul>
+   </div>
+      </div>
 </nav>
 
 <div class="container h-screen p-0">
