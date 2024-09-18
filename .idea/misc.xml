@@ -1,10 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="Black">
-    <option name="sdkName" value="Python 3.12 (MedicSite)" />
-  </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="MedicSite" project-jdk-type="Python SDK" />
-  <component name="PyCharmProfessionalAdvertiser">
-    <option name="shown" value="true" />
-  </component>
-</project>
+version https://git-lfs.github.com/spec/v1
+oid sha256:2a335d6caaf72a963728d8bf86e01237955b3a7900ac17d92c18d1e3f99e9164
+size 395

@@ -1,21 +1,3 @@
-/* static/custom.css */
-
-:root {
-    --primary-bg-color: #000000;  /* Black background */
-    --primary-text-color: #FFFFFF;  /* White text */
-}
-
-body {
-    background-color: var(--primary-bg-color);
-    color: var(--primary-text-color);
-}
-
-input, textarea {
-    background-color: var(--primary-bg-color);
-    color: var(--primary-text-color);
-}
-
-.chatbox {
-    background-color: var(--primary-bg-color);
-    color: var(--primary-text-color);
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:924de77642e77152f0bbdc2389f815e73cf78995a72616da852f4af188949857
+size 445

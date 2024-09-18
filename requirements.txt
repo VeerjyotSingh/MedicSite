@@ -1,14 +1,3 @@
-sounddevice
-soundfile
-Flask
-newsapi-python
-gunicorn
-firebase-admin
-gradio
-google-generativeai
-keras
-librosa
-numpy
-tensorflow
-pillow
-flask_sqlalchemy
+version https://git-lfs.github.com/spec/v1
+oid sha256:70afd64f171b85de94e838b49686a257e55204276f12d9cb0530e99cdb4d937a
+size 148

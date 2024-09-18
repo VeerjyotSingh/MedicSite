@@ -1,17 +1,3 @@
-Index: templates/contact.html
-IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
-<+><!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>contact</title>\n    <link rel=\"stylesheet\" href=\"static/contact.css\">\n    <link rel=\"stylesheet\" href=\"static/style.css\">\n    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css\">\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH\" crossorigin=\"anonymous\">\n</head>\n<body class=\"bg-black text-white\">\n<nav class=\"navbar navbar-expand-lg bg-black border-bottom\" data-bs-theme=\"dark\">\n  <div class=\"container-fluid\">\n       <a class=\"navbar-brand\" href=\"{{ url_for('about') }}\">MedicSite</a>\n    <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarNavDropdown\" aria-controls=\"navbarText\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n    <div class=\"collapse navbar-collapse\" id=\"navbarNavDropdown\">\n    <ul class=\"navbar-nav\">\n     <li class=\"nav-item\"><a href=\"{{ url_for('news') }}\" class=\"nav-link\">News</a></li>\n     <li class=\"nav-item\"><a href=\"{{ url_for('meddit') }}\" class=\"nav-link\">Meddit</a></li>\n     <li class=\"nav-item\"><a href=\"{{ url_for('locator') }}\" class=\"nav-link\">Locator</a></li>\n     <li class=\"nav-item\"><a href=\"{{ url_for('contact') }}\" class=\"nav-link\">Contact</a></li>\n     <li class=\"nav-item\"><a href=\"{{ url_for('test') }}\" class=\"nav-link\">Online Test</a></li>\n     <li class=\"nav-item\"><a class=\"nav-link\" href=\"{{ url_for('skincancer') }}\">Skin Cancer</a></li>\n     <li class=\"nav-item\"><a class=\"nav-link\" href=\"{{ url_for('lungcancer') }}\">Lung Cancer</a></li>\n     <li class=\"nav-item\"><a class=\"nav-link\" href=\"{{ url_for('breastcancer') }}\">Breast Cancer</a></li>\n    </ul>\n   </div>\n   </div>\n</nav>\n    <div style=\"padding-top:50px;\">\n    <div class=\"container bg-black border\" style=\"width:100vw;\">\n    <form class=\"col-md-6\" action=\"mailto:veerjyot.sammi1@gmail.com\" method=\"post\" >\n    <span class=\"form-header\">Contact us</span>\n    <input type=\"email\" class=\"email-input border bg-black text-white\" placeholder=\"Email\">\n    <textarea name=\"feedback\" cols=\"30\" rows=\"9\" class=\"message border bg-black text-white\" placeholder=\"Message...\"></textarea>\n    <button class=\"btn btn-outline-success\" type=\"submit\" style=\"width: 100%;\">Submit</button>\n  </form>\n</div>\n</div>\n<section></section>\n</body>\n</html>
-===================================================================
-diff --git a/templates/contact.html b/templates/contact.html
---- a/templates/contact.html	
-+++ b/templates/contact.html	
-@@ -31,7 +31,7 @@
- </nav>
-     <div style="padding-top:50px;">
-     <div class="container bg-black border" style="width:100vw;">
--    <form class="col-md-6" action="mailto:veerjyot.sammi1@gmail.com" method="post" >
-+    <form class="col-md-6" action="mailto:veerjyot.sammi1@gmail.com" method="post">
-     <span class="form-header">Contact us</span>
-     <input type="email" class="email-input border bg-black text-white" placeholder="Email">
-     <textarea name="feedback" cols="30" rows="9" class="message border bg-black text-white" placeholder="Message..."></textarea>
+version https://git-lfs.github.com/spec/v1
+oid sha256:91bbc7632ba0a2da6e5708f4ef059914671ad18c981ecef5c89fdb745a9896d2
+size 3603

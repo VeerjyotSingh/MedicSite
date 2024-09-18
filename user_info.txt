@@ -1,7 +1,3 @@
-name: veerjyot singh
-age: 123
-place: delhi
-smoking: nope
-previous_disease: nope
-phone: 1231456789
-email: veerjyot.sammi1@gmail.com
+version https://git-lfs.github.com/spec/v1
+oid sha256:0e17acee05ac83f43224d1d9d36034c382eb1f573487a04bb8b0fcff28293d65
+size 131
