@@ -1,4 +1,4 @@
-FROM python:3.11-slim
+FROM python:3.11
 
 # Set the working directory in the container
 WORKDIR /app
@@ -10,9 +10,8 @@ RUN apt-get update && \
         portaudio19-dev \
         libhdf5-dev \
         build-essential \
+        ffmpeg \
         && rm -rf /var/lib/apt/lists/*
-
-RUN apt-get update && apt-get install -y ffmpeg
 
 # Copy the requirements file into the container
 COPY requirements.txt .
@@ -21,15 +20,14 @@ COPY requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-
 # Copy the rest of the application code into the container
 COPY . .
 
-# Expose the port Flask will run on
-EXPOSE 5000
+# Expose the ports Flask and the chatbot will run on
+EXPOSE 5000 4000
 
 # Set environment variable for Flask
 ENV FLASK_APP=main.py
 
-# Run the Flask application with Gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "main:app"]
+# Run the Flask application with Gunicorn and start the chatbot as a separate process
+CMD ["sh", "-c", "gunicorn --bind 0.0.0.0:5000 main:app & python chatbot.py"]
