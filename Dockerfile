@@ -12,12 +12,13 @@ RUN apt-get update && \
         build-essential \
         && rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update && apt-get install -y ffmpeg
+
 # Copy the requirements file into the container
 COPY requirements.txt .
 
 # Install Python dependencies
 RUN pip install --upgrade pip
-RUN pip install google-generativeai
 RUN pip install -r requirements.txt
 
 
