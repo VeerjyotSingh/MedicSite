@@ -1,0 +1,48 @@
+name: Trigger auto deployment for medicsite
+
+# When this action will be executed
+on:
+  # Automatically trigger it when detected changes in repo
+  push:
+    branches: 
+      [ master ]
+    paths:
+    - '**'
+    - '.github/workflows/medicsite-AutoDeployTrigger-2b5ca526-18d2-472e-b1cc-ff2a4c5c4413.yml'
+
+  # Allow manual trigger 
+  workflow_dispatch:      
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions: 
+      id-token: write #This is required for requesting the OIDC JWT Token
+      contents: read #Required when GH token is used to authenticate with private repo
+
+    steps:
+      - name: Checkout to the branch
+        uses: actions/checkout@v2
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.MEDICSITE_AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.MEDICSITE_AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.MEDICSITE_AZURE_SUBSCRIPTION_ID }}
+
+      - name: Build and push container image to registry
+        uses: azure/container-apps-deploy-action@v2
+        with:
+          appSourcePath: ${{ github.workspace }}
+          _dockerfilePathKey_: _dockerfilePath_
+          registryUrl: docker.io/veerjyotsingh/medicsite:0.0.7.RELEASE
+          registryUsername: ${{ secrets.MEDICSITE_REGISTRY_USERNAME }}
+          registryPassword: ${{ secrets.MEDICSITE_REGISTRY_PASSWORD }}
+          containerAppName: medicsite
+          resourceGroup: MedicSite
+          imageToBuild: docker.io/veerjyotsingh/medicsite:0.0.7.RELEASE/medicsite:${{ github.sha }}
+          _buildArgumentsKey_: |
+            _buildArgumentsValues_
+
+
